@@ -554,3 +554,34 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   .skip-link,
   .btn-primary { transition: none; }
 }
+
+/* Bulleted detail inside a role entry — keeps long method write-ups
+   scannable instead of a single dense paragraph. */
+.role-points {
+  grid-column: 1 / -1;
+  margin: 0.55rem 0 0;
+  padding: 0 0 0 1.1rem;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.role-points li {
+  position: relative;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--page-muted, #a0a0ab);
+}
+
+.role-points li::before {
+  content: "";
+  position: absolute;
+  left: -1.1rem;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f0889a;
+}
+
+.role-points i { font-style: italic; }

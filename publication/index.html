@@ -192,7 +192,7 @@
               </div>
               <div class="pub-field">
                 <dt>Year</dt>
-                <dd>2026 <span class="pub-note">accepted 28 Sep 2026</span></dd>
+                <dd>2026 <span class="pub-note">accepted 28 September</span></dd>
               </div>
               <div class="pub-field">
                 <dt>Status</dt>
@@ -232,7 +232,7 @@
               </div>
               <div class="pub-field">
                 <dt>Year</dt>
-                <dd>2025 <span class="pub-note">published 1 Oct</span></dd>
+                <dd>2025 <span class="pub-note">published 1 October</span></dd>
               </div>
               <div class="pub-field">
                 <dt>Pages</dt>
@@ -305,18 +305,18 @@
                 <span class="role-org">— independent research, first author</span></span>
               <span class="role-when">2025 – 2026</span>
               <p class="role-note">
-                Curated 22 complete lytic phage genomes from NCBI GenBank against predefined
-                inclusion criteria, quantified intergenomic similarity with VIRIDIC, and extracted
-                features with Biopython and pandas. Annotated lysis (endolysin, holin) and
-                host-recognition (tail fibre/RBP) modules with InterPro, resolved misannotated
-                endolysins by tBLASTn, and identified two mechanisms of gene interruption:
-                HNH-endonuclease insertion and group I intron splitting. Re-annotation with
-                Pharokka and Phold raised RBP detection from 14/22 to 20/22 genomes. Inferred a
-                maximum-likelihood phylogeny from the large terminase subunit (MAFFT L-INS-i;
-                MEGA 12.1.2, LG+G+I, 1000 bootstraps) and predicted tRNAs de novo with
-                tRNAscan-SE, finding them in 18/22 genomes against 5 annotated in GenBank.
-                Supervised by N. I. Alifiyah, Universitas Terbuka.
+                Curated 22 complete lytic phage genomes from NCBI GenBank and asked how much of
+                what we appear to know about them depends on who annotated them rather than on
+                the genomes themselves. Supervised by N. I. Alifiyah, Universitas Terbuka.
               </p>
+              <ul class="role-points">
+                <li>Measured intergenomic similarity with VIRIDIC and extracted genome features with Biopython and pandas.</li>
+                <li>Annotated the lysis (endolysin, holin) and host-recognition (tail fibre/RBP) modules with InterPro, and recovered misannotated endolysins with tBLASTn.</li>
+                <li>Identified two ways these genes are interrupted: HNH-endonuclease insertion and group I intron splitting.</li>
+                <li>Re-annotating with Pharokka and Phold raised receptor-binding protein detection from 14 genomes to 20 — the variation was in the records, not the biology.</li>
+                <li>Built a maximum-likelihood phylogeny from the large terminase subunit (MAFFT L-INS-i; MEGA 12.1.2, LG+G+I, 1000 bootstraps).</li>
+                <li>Predicted tRNAs <i>de novo</i> with tRNAscan-SE and found them in 18 genomes, against 5 annotated in GenBank.</li>
+              </ul>
             </div>
           </li>
 
@@ -326,14 +326,16 @@
                 <span class="role-org">— independent development</span></span>
               <span class="role-when">2025 – 2026</span>
               <p class="role-note">
-                Built a multi-service Docker Compose stack (WSL2, GPU-enabled) with isolated conda
-                environments per tool, orchestrating Pharokka, tRNAscan-SE,
-                DefenseFinder/AntiDefenseFinder and custom Python modules. Pinned tool and database
-                versions and recorded provenance in every output; validated modules with unit tests,
-                synthetic smoke tests and literature-anchored control cases. Modelled
-                receptor-binding and depolymerase domains with AlphaFold/ColabFold and checked folds
-                with Foldseek and Dali.
+                A reproducible pipeline for the work above: anyone with the repository should get
+                the same answers.
               </p>
+              <ul class="role-points">
+                <li>Multi-service Docker Compose stack (WSL2, GPU-enabled) with an isolated conda environment per tool.</li>
+                <li>Orchestrates Pharokka, tRNAscan-SE, DefenseFinder/AntiDefenseFinder and custom Python modules.</li>
+                <li>Tool and database versions are pinned, and every output records where it came from.</li>
+                <li>Validated with unit tests, synthetic smoke tests and control cases taken from the literature.</li>
+                <li>Modelled receptor-binding and depolymerase domains with AlphaFold/ColabFold, checking folds with Foldseek and Dali.</li>
+              </ul>
             </div>
           </li>
 
@@ -372,9 +374,9 @@
           <div class="data-box-text">
             <h3>Data, scripts and re-annotated records</h3>
             <p>
-              Every input file, analysis script and re-annotated genome record from the comparative
-              genomics study is archived in a versioned public repository with a persistent
-              identifier.
+              Every input file, analysis script and re-annotated genome record from the
+              comparative genomics study is archived on Zenodo under a permanent DOI, so the
+              whole study can be re-run and checked.
             </p>
           </div>
           <a class="act" href="https://doi.org/10.5281/zenodo.21988477" rel="noopener">10.5281/zenodo.21988477</a>
