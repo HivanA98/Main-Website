@@ -16,7 +16,7 @@
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "act cite-copy";
-      btn.textContent = "Salin sitasi";
+      btn.textContent = "Copy citation";
       box.appendChild(btn);
 
       var reset;
@@ -25,11 +25,11 @@
         var plain = text.textContent.replace(/\s+/g, " ").trim();
 
         var done = function (ok) {
-          btn.textContent = ok ? "Tersalin" : "Gagal menyalin";
+          btn.textContent = ok ? "Copied" : "Copy failed";
           btn.setAttribute("data-copied", ok ? "1" : "0");
           clearTimeout(reset);
           reset = setTimeout(function () {
-            btn.textContent = "Salin sitasi";
+            btn.textContent = "Copy citation";
             btn.removeAttribute("data-copied");
           }, 2000);
         };
