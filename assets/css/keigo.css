@@ -1,0 +1,343 @@
+/* ============================================================
+   敬語会話 — style.css
+   Konsep: kertas washi + tinta sumi + stempel hanko (朱).
+   Tanpa gambar eksternal / IP berhak cipta — semua motif CSS.
+   ============================================================ */
+
+/* ---------- Token warna: tema WASHI (terang, default) ---------- */
+:root {
+  --paper:        #ece3cf;   /* washi / kinari */
+  --paper-card:   #f6f0e1;   /* permukaan kartu */
+  --paper-line:   #d9cdb2;   /* garis halus */
+  --ink:          #201b15;   /* sumi */
+  --ink-soft:     #554c3d;
+  --ink-faint:    #8a7f6b;
+  --shu:          #b3282d;   /* vermilion — aksen & hanko */
+  --shu-deep:     #8f1f24;
+  --gold:         #a6803b;
+
+  /* warna semantik jenis keigo (tetap lintas tema) */
+  --c-sonkei:  #2b5a78;  /* 尊敬語 — 藍 */
+  --c-kenjou:  #5f7040;  /* 謙譲語 — 利休茶 */
+  --c-teinei:  #554c3d;  /* 丁寧語 — 墨 */
+  --c-teikei:  #9c7730;  /* 定型   — 金茶 */
+  --c-chuui:   #b3282d;  /* 注意   — 朱 */
+
+  --radius: 4px;
+  --shadow: 0 14px 40px -18px rgba(30,22,12,.55);
+  --pattern-ink: rgba(43,90,120,.06);
+
+  --font-jp: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN",
+             "Noto Serif JP", "MS Mincho", serif;
+  --font-ui: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic",
+             "Noto Sans JP", system-ui, sans-serif;
+}
+
+/* ---------- tema 藍 (indigo malam) ---------- */
+body.theme-ai {
+  --paper:      #16222e;
+  --paper-card: #1e2f3f;
+  --paper-line: #33475a;
+  --ink:        #ece3cf;
+  --ink-soft:   #c4d2df;
+  --ink-faint:  #8ba0b3;
+  --shu:        #e0554f;
+  --shu-deep:   #c23f3a;
+  --gold:       #d7b46a;
+  --c-sonkei:   #8fc1e3;
+  --c-kenjou:   #b7cd8a;
+  --c-teinei:   #cfc3ad;
+  --c-teikei:   #e5c37e;
+  --c-chuui:    #e0554f;
+  --shadow: 0 16px 44px -18px rgba(0,0,0,.7);
+  --pattern-ink: rgba(215,180,106,.06);
+}
+
+/* ---------- tema 抹茶 (hijau lembut) ---------- */
+body.theme-matcha {
+  --paper:      #dfe3cf;
+  --paper-card: #eef1e2;
+  --paper-line: #c4cbab;
+  --ink:        #2b3222;
+  --ink-soft:   #4d5640;
+  --ink-faint:  #7f886e;
+  --shu:        #b3282d;
+  --shu-deep:   #8f1f24;
+  --gold:       #92802f;
+  --pattern-ink: rgba(95,112,64,.08);
+}
+
+/* ---------- dasar ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-ui);
+  color: var(--ink);
+  background-color: var(--paper);
+  /* motif 青海波 (seigaiha) sangat halus dari radial-gradient bertumpuk */
+  background-image:
+    radial-gradient(circle at 50% 100%, transparent 34%, var(--pattern-ink) 35%, var(--pattern-ink) 37%, transparent 38%),
+    radial-gradient(circle at 50% 100%, transparent 22%, var(--pattern-ink) 23%, var(--pattern-ink) 25%, transparent 26%),
+    radial-gradient(circle at 50% 100%, transparent 10%, var(--pattern-ink) 11%, var(--pattern-ink) 13%, transparent 14%);
+  background-size: 56px 28px;
+  background-position: 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 16px 96px;
+  transition: background-color .5s ease, color .5s ease;
+}
+
+/* ---------- kepala / noren ---------- */
+.masthead { text-align: center; margin-bottom: 6px; }
+
+.masthead .title {
+  font-family: var(--font-jp);
+  font-size: clamp(34px, 7vw, 52px);
+  letter-spacing: .18em;
+  margin: 0;
+  color: var(--ink);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+.masthead .title::after {
+  content: "";
+  position: absolute; left: 12%; right: 12%; bottom: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--shu), transparent);
+}
+.masthead .subtitle {
+  font-family: var(--font-ui);
+  font-size: 12px; letter-spacing: .42em; text-transform: uppercase;
+  color: var(--ink-faint); margin: 10px 0 0;
+}
+
+/* ---------- panel utama ---------- */
+.stage { width: 100%; max-width: 620px; }
+
+/* ---------- toolbar filter + toggle ---------- */
+.toolbar {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  align-items: center; justify-content: center;
+  margin: 22px 0 10px;
+}
+.chip {
+  font-family: var(--font-ui);
+  font-size: 13px; line-height: 1;
+  padding: 8px 13px; border-radius: 999px;
+  border: 1px solid var(--paper-line);
+  background: transparent; color: var(--ink-soft);
+  cursor: pointer; transition: all .18s ease; white-space: nowrap;
+}
+.chip:hover { border-color: var(--shu); color: var(--ink); }
+.chip[aria-pressed="true"] {
+  background: var(--shu); border-color: var(--shu); color: #fff;
+}
+
+.toggles {
+  display: flex; gap: 14px; justify-content: center;
+  margin: 2px 0 14px; flex-wrap: wrap;
+}
+.toggle {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13px; color: var(--ink-soft); cursor: pointer; user-select: none;
+}
+.toggle input { accent-color: var(--shu); width: 15px; height: 15px; cursor: pointer; }
+
+/* ---------- progres ---------- */
+.progress-row {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px; font-size: 13px; color: var(--ink-faint);
+}
+.progress-track {
+  flex: 1; height: 4px; border-radius: 4px;
+  background: var(--paper-line); overflow: hidden;
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--shu));
+  transition: width .35s ease;
+}
+.counter { font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.counter b { color: var(--ink); font-weight: 600; }
+
+/* ---------- kartu 3D ---------- */
+.card-scene { perspective: 1600px; margin: 0 auto; }
+.card {
+  position: relative; width: 100%; min-height: 340px;
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.4,.2,.2,1);
+  cursor: pointer;
+}
+.card.is-flipped { transform: rotateY(180deg); }
+
+.face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: var(--radius);
+  background: var(--paper-card);
+  border: 1px solid var(--paper-line);
+  box-shadow: var(--shadow);
+  padding: 30px 26px;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+/* garis tepi tipis ala kartu meishi */
+.face::before {
+  content: ""; position: absolute; inset: 9px;
+  border: 1px solid var(--paper-line); border-radius: 2px;
+  pointer-events: none; opacity: .6;
+}
+.face-back { transform: rotateY(180deg); }
+
+/* badge jenis keigo */
+.badge {
+  align-self: flex-start;
+  font-family: var(--font-ui); font-size: 12px; font-weight: 600;
+  letter-spacing: .12em;
+  padding: 4px 11px; border-radius: 2px; color: #fff;
+  position: relative; z-index: 2;
+}
+.badge[data-type="尊敬語"] { background: var(--c-sonkei); }
+.badge[data-type="謙譲語"] { background: var(--c-kenjou); }
+.badge[data-type="丁寧語"] { background: var(--c-teinei); }
+.badge[data-type="定型"]   { background: var(--c-teikei); }
+.badge[data-type="注意"]   { background: var(--c-chuui); }
+.badge .cat { opacity: .8; font-weight: 400; margin-left: 8px; }
+
+/* isi depan */
+.jp-line {
+  font-family: var(--font-jp);
+  color: var(--ink);
+  line-height: 1.9;
+  font-size: clamp(22px, 4.6vw, 30px);
+  margin: auto 0;
+  text-align: center; z-index: 2;
+  word-break: normal;
+}
+.jp-line ruby rt {
+  font-family: var(--font-ui);
+  font-size: .46em; color: var(--shu);
+  font-weight: 500; letter-spacing: .02em;
+}
+body.hide-furigana .jp-line ruby rt { visibility: hidden; }
+
+.romaji-line {
+  font-family: var(--font-ui); font-size: 14px; font-style: italic;
+  color: var(--ink-faint); text-align: center; margin-top: 14px; z-index: 2;
+}
+body.hide-romaji .romaji-line { display: none; }
+
+.hint {
+  font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--ink-faint); text-align: center; margin-top: 16px; z-index: 2;
+}
+
+/* isi belakang */
+.meaning {
+  font-family: var(--font-ui); font-size: clamp(18px, 3.8vw, 22px);
+  font-weight: 500; line-height: 1.5; color: var(--ink);
+  text-align: center; margin: auto 0 12px; z-index: 2;
+}
+.reading {
+  font-family: var(--font-jp); font-size: 16px; color: var(--ink-soft);
+  text-align: center; margin-bottom: 14px; z-index: 2;
+}
+.note {
+  font-family: var(--font-ui); font-size: 13.5px; line-height: 1.65;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--paper-line);
+  padding-top: 12px; z-index: 2;
+}
+.note::before {
+  content: "使い方"; display: block;
+  font-size: 10px; letter-spacing: .3em; color: var(--shu);
+  margin-bottom: 5px;
+}
+.note ruby rt { font-size: .5em; color: var(--ink-faint); }
+
+/* stempel hanko (muncul saat sudah dikuasai) */
+.seal {
+  position: absolute; top: 18px; right: 18px;
+  width: 60px; height: 60px; border-radius: 50%;
+  border: 2.5px solid var(--shu);
+  color: var(--shu); font-family: var(--font-jp);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; transform: rotate(-14deg) scale(0);
+  opacity: 0; transition: transform .28s cubic-bezier(.2,1.4,.4,1), opacity .2s;
+  z-index: 3; pointer-events: none;
+}
+.card.learned .face-front .seal { transform: rotate(-14deg) scale(1); opacity: .92; }
+
+/* ---------- kontrol ---------- */
+.controls {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin-top: 22px;
+}
+.btn {
+  font-family: var(--font-ui); font-size: 14px;
+  padding: 13px 10px; border-radius: var(--radius);
+  border: 1px solid var(--paper-line); background: var(--paper-card);
+  color: var(--ink); cursor: pointer; transition: all .16s ease;
+}
+.btn:hover { border-color: var(--shu); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn .k { display: block; font-size: 10px; color: var(--ink-faint); margin-top: 3px; }
+.btn-primary { background: var(--shu); border-color: var(--shu); color: #fff; }
+.btn-primary:hover { background: var(--shu-deep); border-color: var(--shu-deep); }
+.btn-primary .k { color: rgba(255,255,255,.7); }
+.btn.is-on { background: var(--gold); border-color: var(--gold); color: #241d0e; }
+
+/* ---------- pemilih tema ---------- */
+.theme-switcher {
+  position: fixed; bottom: 18px; right: 18px; z-index: 50;
+  display: flex; gap: 6px;
+  background: var(--paper-card); border: 1px solid var(--paper-line);
+  border-radius: 999px; padding: 5px; box-shadow: var(--shadow);
+}
+.theme-dot {
+  width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+  border: 2px solid transparent; transition: transform .15s ease;
+}
+.theme-dot:hover { transform: scale(1.12); }
+.theme-dot[aria-pressed="true"] { border-color: var(--ink); }
+.theme-dot.washi  { background: #ece3cf; }
+.theme-dot.ai     { background: #1e2f3f; }
+.theme-dot.matcha { background: #cdd4b0; }
+
+/* ---------- sakura ambient ---------- */
+.sakura {
+  position: fixed; top: -20px; width: 10px; height: 10px;
+  background: var(--shu); opacity: .28; border-radius: 100% 0 100% 0;
+  pointer-events: none; z-index: 1;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0%   { transform: translateY(-10vh) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* ---------- kondisi kosong ---------- */
+.empty {
+  text-align: center; color: var(--ink-faint);
+  font-size: 15px; padding: 40px 20px;
+}
+
+/* ---------- responsif ---------- */
+@media (max-width: 460px) {
+  .controls { grid-template-columns: repeat(2, 1fr); }
+  .face { padding: 24px 18px; }
+}
+
+/* ---------- aksesibilitas ---------- */
+.btn:focus-visible, .chip:focus-visible, .theme-dot:focus-visible,
+.toggle input:focus-visible, .card:focus-visible {
+  outline: 2px solid var(--shu); outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .sakura { display: none; }
+  .seal { transition: opacity .2s; }
+}
