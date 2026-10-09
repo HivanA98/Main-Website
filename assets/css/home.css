@@ -1,0 +1,203 @@
+/* ============================================================
+   home.css — landing page only
+   Loaded after site.css, which supplies the .page tokens.
+   ============================================================ */
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: clamp(2.5rem, 9vw, 5rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.hero-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+  align-items: center;
+  margin-bottom: 1.1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--page-muted);
+}
+
+.hero-eyebrow .dot { color: #46465a; }
+
+.hero h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.1rem, 7.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.hero-tagline {
+  margin: 0 0 1.5rem;
+  max-width: 54ch;
+  font-size: clamp(1.02rem, 2.7vw, 1.22rem);
+  line-height: 1.6;
+  color: #d8d8e2;
+}
+
+.hero-tagline strong { color: #fff; font-weight: 600; }
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.1rem;
+  align-items: center;
+  margin: 0 0 1.75rem;
+  font-size: 0.86rem;
+  color: var(--page-muted);
+}
+
+.hero-links { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--page-line);
+  background: var(--page-surface);
+  color: var(--page-text) !important;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.hero-link:hover { border-color: rgba(209, 21, 42, 0.6); background: #1a1a24; }
+.hero-link:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.hero-link-primary {
+  background: linear-gradient(90deg, var(--site-accent-b), var(--site-accent-a));
+  border-color: transparent;
+}
+
+.hero-link-primary:hover {
+  background: linear-gradient(90deg, #b81226, #6a176d);
+  border-color: transparent;
+}
+
+/* ---------- figures ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  background: var(--page-line);
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  overflow: hidden;
+  list-style: none;
+}
+
+.stat {
+  padding: 1.15rem 1.25rem;
+  background: var(--page-surface);
+}
+
+.stat-num {
+  display: block;
+  font-size: clamp(1.45rem, 4.4vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #f0889a, #c87ad0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--page-muted);
+}
+
+/* ---------- the two sides of the work ---------- */
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pillar {
+  padding: 1.5rem 1.5rem 1.6rem;
+  background: var(--page-surface);
+  border: 1px solid var(--page-line);
+  border-top: 2px solid rgba(209, 21, 42, 0.55);
+  border-radius: 8px;
+}
+
+.pillar:nth-child(2) { border-top-color: rgba(122, 27, 126, 0.75); }
+
+.pillar h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.pillar p {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--page-muted);
+}
+
+.pillar p i { font-style: italic; }
+
+/* ---------- compact publication teaser ---------- */
+
+.pub-mini { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+
+.pub-mini-item {
+  display: block;
+  padding: 1.1rem 1.2rem;
+  background: var(--page-surface);
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.pub-mini-item:hover,
+.pub-mini-item:focus-visible {
+  border-color: rgba(209, 21, 42, 0.5);
+  background: #181822;
+  color: inherit;
+}
+
+.pub-mini-item:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.pub-mini-title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+  margin-bottom: 0.3rem;
+}
+
+.pub-mini-title i { font-style: italic; }
+
+.pub-mini-meta {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--page-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-link, .pub-mini-item { transition: none; }
+}
