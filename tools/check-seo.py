@@ -42,6 +42,8 @@ def indexable_pages():
             rel = rel.replace("\\", "/")
             if rel.startswith("google") or rel == "404.html":
                 continue          # verification file / error page
+            if rel in ("kaiwa/index.html", "kaiwa-keigo/index.html"):
+                continue          # redirect stubs for the moved paths
             out.append(rel)
     return sorted(out)
 

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platinum Challenge — three-class Indonesian sentiment classifier</title>
+  <meta name="description" content="A negative, neutral and positive sentiment classifier for Indonesian text with a reproducible benchmark: accuracy 0.886 and macro-F1 0.857 over 10,933 rows.">
+  <meta name="author" content="Ivan Armadi Hasugian">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0d0d12">
+  <link rel="canonical" href="https://ivan-armadi-hasugian.my.id/data-science/platinum-challenge/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ivan Armadi Hasugian">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://ivan-armadi-hasugian.my.id/data-science/platinum-challenge/">
+  <meta property="og:title" content="Platinum Challenge — three-class Indonesian sentiment classifier">
+  <meta property="og:description" content="A negative, neutral and positive sentiment classifier for Indonesian text with a reproducible benchmark: accuracy 0.886 and macro-F1 0.857 over 10,933 rows.">
+  <meta property="og:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta property="og:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Platinum Challenge — three-class Indonesian sentiment classifier">
+  <meta name="twitter:description" content="A negative, neutral and positive sentiment classifier for Indonesian text with a reproducible benchmark: accuracy 0.886 and macro-F1 0.857 over 10,933 rows.">
+  <meta name="twitter:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta name="twitter:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ivan-armadi-hasugian.my.id/data-science/platinum-challenge/#webpage",
+      "url": "https://ivan-armadi-hasugian.my.id/data-science/platinum-challenge/",
+      "name": "Platinum Challenge",
+      "description": "Three-class Indonesian sentiment classifier with a reproducible benchmark.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://ivan-armadi-hasugian.my.id/#website" },
+      "about": { "@id": "https://ivan-armadi-hasugian.my.id/#person" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ivan-armadi-hasugian.my.id/"},
+        {"@type": "ListItem", "position": 2, "name": "Data Science", "item": "https://ivan-armadi-hasugian.my.id/data-science/"},
+        {"@type": "ListItem", "position": 3, "name": "Platinum Challenge", "item": "https://ivan-armadi-hasugian.my.id/data-science/platinum-challenge/"}
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ivan-armadi-hasugian.my.id/#person",
+      "name": "Ivan Armadi Hasugian",
+      "url": "https://ivan-armadi-hasugian.my.id/",
+      "sameAs": [
+        "https://www.linkedin.com/in/hivanarmadi/",
+        "https://github.com/HivanA98",
+        "https://orcid.org/0009-0006-7501-891X"
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/work.css">
+</head>
+<body class="page page-flex has-sitebar">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="site-bar">
+    <a class="site-brand" href="/">
+      <span class="site-brand-mark" aria-hidden="true"></span>
+      <span class="site-brand-text">Ivan Armadi Hasugian</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/qa-tools/">QA Tools</a></li>
+        <li><a href="/data-science/" aria-current="page">Data Science</a></li>
+        <li><a href="/publication/">Publications</a></li>
+        <li><a href="/training/">Training</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <header class="paper-head">
+      <div class="wrap">
+          <ol class="crumbs">
+            <li><a href="/">Home</a></li>
+            <li><a href="/data-science/">Data Science</a></li>
+            <li><span aria-current="page">Platinum Challenge</span></li>
+          </ol>
+        <p class="paper-journal">
+          <span class="paper-kind">Platinum Challenge</span>
+          <span>3 classes &middot; 10,933 rows &middot; reproducible</span>
+          <a href="https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/platinum.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/platinum.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Platinum Challenge CI status"></a>
+        </p>
+        <h1 class="paper-title">Three-class sentiment, with the workings shown</h1>
+        <p class="page-lede">
+          Negative, neutral or positive. The interesting part is not the
+          classifier but the benchmark beside it, which regenerates every
+          number quoted in the repository &mdash; baseline, ablation and model
+          comparison &mdash; so none of them has to be taken on trust.
+        </p>
+        <div class="paper-actions">
+          <a class="act act-primary" href="https://github.com/HivanA98/DataScience-BinarAcademy/tree/main/DataScience18_Binar_PlatinumChallange" target="_blank" rel="noopener">View the code</a>
+          <a class="act" href="https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/platinum.yml" target="_blank" rel="noopener">CI runs</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="paper-section" aria-labelledby="files">
+      <div class="wrap">
+        <h2 id="files">What is in it</h2>
+        <ul class="feature-list">
+          <li><span class="inline-code">sentiment_pipeline.py</span> &mdash; the final pipeline: train, evaluate, predict, save and load.</li>
+          <li><span class="inline-code">benchmark.py</span> &mdash; reproduces every figure in the repository, including the baseline and the ablation.</li>
+          <li><span class="inline-code">sentiment_model.pkl</span> &mdash; the trained model, ready to load.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="paper-section" aria-labelledby="report">
+      <div class="wrap">
+        <h2 id="report">Classification report</h2>
+        <pre class="code-block"><code>              precision    recall  f1-score   support
+
+    negative      0.844     0.843     0.844      3412
+     neutral      0.813     0.793     0.803      1138
+    positive      0.921     0.926     0.923      6383
+
+    accuracy                          0.886     10933
+   macro avg      0.859     0.854     0.857     10933</code></pre>
+        <p class="paper-licence">
+          The neutral class is the hard one: it is the smallest and the most ambiguous, and it
+          is where the original recipe lost most of its score.
+        </p>
+      </div>
+    </section>
+
+    <nav class="paper-nav" aria-label="Section navigation">
+      <div class="wrap" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;">
+        <a class="act" href="/data-science/gold-challenge/">&larr; Gold Challenge</a>
+        <a class="act" href="/data-science/">Data Science &rarr;</a>
+      </div>
+    </nav>
+
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>&copy; 2026 Ivan Armadi Hasugian</span>
+      <span class="site-foot-links">
+        <a href="/">Home</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/qa-tools/">QA Tools</a>
+        <a href="/data-science/">Data Science</a>
+        <a href="/publication/">Publications</a>
+        <a href="/training/">Training</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>

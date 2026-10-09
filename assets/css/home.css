@@ -81,46 +81,6 @@
   border-color: transparent;
 }
 
-/* ---------- figures ---------- */
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1px;
-  margin: 0;
-  padding: 0;
-  background: var(--page-line);
-  border: 1px solid var(--page-line);
-  border-radius: 8px;
-  overflow: hidden;
-  list-style: none;
-}
-
-.stat {
-  padding: 1.15rem 1.25rem;
-  background: var(--page-surface);
-}
-
-.stat-num {
-  display: block;
-  font-size: clamp(1.45rem, 4.4vw, 1.85rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #f0889a, #c87ad0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.stat-label {
-  display: block;
-  margin-top: 0.3rem;
-  font-size: 0.78rem;
-  line-height: 1.4;
-  color: var(--page-muted);
-}
-
 /* ---------- the two sides of the work ---------- */
 
 .pillars {

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Framework Automation — 54 tests on 4 applications</title>
+  <meta name="description" content="Robot Framework and SeleniumLibrary suites built on the Page Object Model: 54 tests across four applications, linted with Robocop and run in parallel with Pabot.">
+  <meta name="author" content="Ivan Armadi Hasugian">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0d0d12">
+  <link rel="canonical" href="https://ivan-armadi-hasugian.my.id/qa-tools/robot-framework/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ivan Armadi Hasugian">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://ivan-armadi-hasugian.my.id/qa-tools/robot-framework/">
+  <meta property="og:title" content="Robot Framework Automation — 54 tests on 4 applications">
+  <meta property="og:description" content="Robot Framework and SeleniumLibrary suites built on the Page Object Model: 54 tests across four applications, linted with Robocop and run in parallel with Pabot.">
+  <meta property="og:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta property="og:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Robot Framework Automation — 54 tests on 4 applications">
+  <meta name="twitter:description" content="Robot Framework and SeleniumLibrary suites built on the Page Object Model: 54 tests across four applications, linted with Robocop and run in parallel with Pabot.">
+  <meta name="twitter:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta name="twitter:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ivan-armadi-hasugian.my.id/qa-tools/robot-framework/#webpage",
+      "url": "https://ivan-armadi-hasugian.my.id/qa-tools/robot-framework/",
+      "name": "Robot Framework Automation",
+      "description": "54 Robot Framework tests across four web applications.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://ivan-armadi-hasugian.my.id/#website" },
+      "about": { "@id": "https://ivan-armadi-hasugian.my.id/#person" }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Robot-Framework",
+      "description": "Web UI test automation with Robot Framework and SeleniumLibrary on the Page Object Model.",
+      "codeRepository": "https://github.com/HivanA98/Robot-Framework",
+      "programmingLanguage": "Python",
+      "author": { "@id": "https://ivan-armadi-hasugian.my.id/#person" },
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ivan-armadi-hasugian.my.id/"},
+        {"@type": "ListItem", "position": 2, "name": "QA Tools", "item": "https://ivan-armadi-hasugian.my.id/qa-tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Robot Framework", "item": "https://ivan-armadi-hasugian.my.id/qa-tools/robot-framework/"}
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ivan-armadi-hasugian.my.id/#person",
+      "name": "Ivan Armadi Hasugian",
+      "url": "https://ivan-armadi-hasugian.my.id/",
+      "sameAs": [
+        "https://www.linkedin.com/in/hivanarmadi/",
+        "https://github.com/HivanA98",
+        "https://orcid.org/0009-0006-7501-891X"
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/work.css">
+</head>
+<body class="page page-flex has-sitebar">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="site-bar">
+    <a class="site-brand" href="/">
+      <span class="site-brand-mark" aria-hidden="true"></span>
+      <span class="site-brand-text">Ivan Armadi Hasugian</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/qa-tools/" aria-current="page">QA Tools</a></li>
+        <li><a href="/data-science/">Data Science</a></li>
+        <li><a href="/publication/">Publications</a></li>
+        <li><a href="/training/">Training</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <header class="paper-head">
+      <div class="wrap">
+          <ol class="crumbs">
+            <li><a href="/">Home</a></li>
+            <li><a href="/qa-tools/">QA Tools</a></li>
+            <li><span aria-current="page">Robot Framework</span></li>
+          </ol>
+        <p class="paper-journal">
+          <span class="paper-kind">Robot Framework</span>
+          <span>4 applications &middot; 54 tests &middot; Pabot parallel</span>
+          <a href="https://github.com/HivanA98/Robot-Framework/actions/workflows/robot-tests.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Robot-Framework/actions/workflows/robot-tests.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Robot Framework tests workflow status"></a>
+        </p>
+        <h1 class="paper-title">Robot Framework &amp; the Page Object Model</h1>
+        <p class="page-lede">
+          Keyword-driven web testing where the keywords read like sentences and
+          the selectors stay out of the test files. Suites are isolated enough
+          to run four at a time, which brings a six-minute run down to about
+          two.
+        </p>
+        <div class="paper-actions">
+          <a class="act act-primary" href="https://github.com/HivanA98/Robot-Framework" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="act" href="https://github.com/HivanA98/Robot-Framework/actions/workflows/robot-tests.yml" target="_blank" rel="noopener">CI runs</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="paper-section" aria-labelledby="apps">
+      <div class="wrap">
+        <h2 id="apps">Applications under test</h2>
+        <div class="proj-table-wrap">
+          <table class="proj-table">
+            <caption>Suites against live shops stop before anything is submitted.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Application</th>
+                <th scope="col">Covers</th>
+                <th scope="col" class="num">Tests</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">SauceDemo</th><td class="stack">Login, inventory, cart and checkout, including item total plus 8% tax, in both TDD and BDD suites</td><td class="num">29</td></tr>
+              <tr><th scope="row">CURA Healthcare</th><td class="stack">Login, a 3 facilities x 3 programs appointment matrix, and booking history</td><td class="num">10</td></tr>
+              <tr><th scope="row">BeautyHaul</th><td class="stack">Browsing and search on a live shop &mdash; nothing is submitted</td><td class="num">11</td></tr>
+              <tr><th scope="row">Voila</th><td class="stack">Browsing on a live shop &mdash; nothing is submitted</td><td class="num">4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="paper-section" aria-labelledby="how">
+      <div class="wrap">
+        <h2 id="how">How it is built</h2>
+        <ul class="feature-list">
+          <li><strong>Page Object Model.</strong> Locators live in resource files per page; test files only call keywords.</li>
+          <li><strong>Data-driven tests.</strong> Five valid users and six invalid login combinations run from one template rather than six copies.</li>
+          <li><strong>Parallel by design.</strong> Each suite opens its own browser in <span class="inline-code">Suite Setup</span> and clears cookies and <span class="inline-code">localStorage</span> in <span class="inline-code">Test Setup</span>, so Pabot can run them together safely.</li>
+          <li><strong>Robocop linting</strong> runs in CI before the tests, so style problems fail fast.</li>
+          <li><strong>No driver management.</strong> Selenium Manager fetches the matching driver, so there is no ChromeDriver to pin.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="paper-nav" aria-label="Section navigation">
+      <div class="wrap" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;">
+        <a class="act" href="/qa-tools/cypress/">&larr; Cypress</a>
+        <a class="act" href="/qa-tools/playwright/">Playwright &rarr;</a>
+      </div>
+    </nav>
+
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>&copy; 2026 Ivan Armadi Hasugian</span>
+      <span class="site-foot-links">
+        <a href="/">Home</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/qa-tools/">QA Tools</a>
+        <a href="/data-science/">Data Science</a>
+        <a href="/publication/">Publications</a>
+        <a href="/training/">Training</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>

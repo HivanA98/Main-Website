@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cypress &amp; Karate Automation — 12 projects, 170+ tests</title>
+  <meta name="description" content="Twelve Cypress and Karate projects across 10 applications: Page Object Model, Gherkin BDD, cy.intercept stubbing and a Karate API suite, each with its own CI.">
+  <meta name="author" content="Ivan Armadi Hasugian">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0d0d12">
+  <link rel="canonical" href="https://ivan-armadi-hasugian.my.id/qa-tools/cypress/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ivan Armadi Hasugian">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://ivan-armadi-hasugian.my.id/qa-tools/cypress/">
+  <meta property="og:title" content="Cypress &amp; Karate Automation — 12 projects, 170+ tests">
+  <meta property="og:description" content="Twelve Cypress and Karate projects across 10 applications: Page Object Model, Gherkin BDD, cy.intercept stubbing and a Karate API suite, each with its own CI.">
+  <meta property="og:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta property="og:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cypress &amp; Karate Automation — 12 projects, 170+ tests">
+  <meta name="twitter:description" content="Twelve Cypress and Karate projects across 10 applications: Page Object Model, Gherkin BDD, cy.intercept stubbing and a Karate API suite, each with its own CI.">
+  <meta name="twitter:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta name="twitter:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ivan-armadi-hasugian.my.id/qa-tools/cypress/#webpage",
+      "url": "https://ivan-armadi-hasugian.my.id/qa-tools/cypress/",
+      "name": "Cypress & Karate Automation",
+      "description": "Twelve Cypress and Karate projects with 170+ tests across 10 applications.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://ivan-armadi-hasugian.my.id/#website" },
+      "about": { "@id": "https://ivan-armadi-hasugian.my.id/#person" }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Cypress-CodeJS",
+      "description": "End-to-end and API test automation with Cypress, Cucumber and Karate.",
+      "codeRepository": "https://github.com/HivanA98/Cypress-CodeJS",
+      "programmingLanguage": "JavaScript",
+      "author": { "@id": "https://ivan-armadi-hasugian.my.id/#person" },
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ivan-armadi-hasugian.my.id/"},
+        {"@type": "ListItem", "position": 2, "name": "QA Tools", "item": "https://ivan-armadi-hasugian.my.id/qa-tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Cypress", "item": "https://ivan-armadi-hasugian.my.id/qa-tools/cypress/"}
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ivan-armadi-hasugian.my.id/#person",
+      "name": "Ivan Armadi Hasugian",
+      "url": "https://ivan-armadi-hasugian.my.id/",
+      "sameAs": [
+        "https://www.linkedin.com/in/hivanarmadi/",
+        "https://github.com/HivanA98",
+        "https://orcid.org/0009-0006-7501-891X"
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/work.css">
+</head>
+<body class="page page-flex has-sitebar">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="site-bar">
+    <a class="site-brand" href="/">
+      <span class="site-brand-mark" aria-hidden="true"></span>
+      <span class="site-brand-text">Ivan Armadi Hasugian</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/qa-tools/" aria-current="page">QA Tools</a></li>
+        <li><a href="/data-science/">Data Science</a></li>
+        <li><a href="/publication/">Publications</a></li>
+        <li><a href="/training/">Training</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <header class="paper-head">
+      <div class="wrap">
+          <ol class="crumbs">
+            <li><a href="/">Home</a></li>
+            <li><a href="/qa-tools/">QA Tools</a></li>
+            <li><span aria-current="page">Cypress</span></li>
+          </ol>
+        <p class="paper-journal">
+          <span class="paper-kind">Cypress &middot; Karate</span>
+          <span>12 projects &middot; 170+ tests &middot; 10 applications</span>
+        </p>
+        <h1 class="paper-title">Cypress &amp; Karate Automation</h1>
+        <p class="page-lede">
+          Twelve independent projects in one repository, each testing a real
+          application and each with its own pipeline. They share one reusable
+          GitHub Actions workflow, so adding a project means adding a few lines
+          of configuration rather than a new build script.
+        </p>
+        <div class="paper-actions">
+          <a class="act act-primary" href="https://github.com/HivanA98/Cypress-CodeJS" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="act" href="https://github.com/HivanA98/Cypress-CodeJS/actions" target="_blank" rel="noopener">All CI runs</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="paper-section" aria-labelledby="projects">
+      <div class="wrap">
+        <h2 id="projects">Projects and live CI status</h2>
+        <div class="proj-table-wrap">
+          <table class="proj-table">
+            <caption>Status badges are served by GitHub and update themselves after every run.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Project</th>
+                <th scope="col">CI</th>
+                <th scope="col">Stack</th>
+                <th scope="col">Application</th>
+                <th scope="col" class="num">Tests</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/Saucedemo" target="_blank" rel="noopener">Saucedemo</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/saucedemo.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/saucedemo.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Saucedemo workflow status"></a></td>
+              <td class="stack">Cypress</td>
+              <td class="app">saucedemo.com</td>
+              <td class="num">27</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/Saucedemo-BDD" target="_blank" rel="noopener">Saucedemo-BDD</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/saucedemo-bdd.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/saucedemo-bdd.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Saucedemo BDD workflow status"></a></td>
+              <td class="stack">Cypress &middot; Cucumber</td>
+              <td class="app">saucedemo.com</td>
+              <td class="num">17</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/BeautyHaul" target="_blank" rel="noopener">BeautyHaul</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/beautyhaul.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/beautyhaul.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="BeautyHaul workflow status"></a></td>
+              <td class="stack">Cypress</td>
+              <td class="app">beautyhaul.com</td>
+              <td class="num">16</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/BeautyHaul-BDD" target="_blank" rel="noopener">BeautyHaul-BDD</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/beautyhaul-bdd.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/beautyhaul-bdd.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="BeautyHaul BDD workflow status"></a></td>
+              <td class="stack">Cypress &middot; Cucumber</td>
+              <td class="app">beautyhaul.com</td>
+              <td class="num">13</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/DemoQA" target="_blank" rel="noopener">DemoQA</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/demoqa.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/demoqa.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="DemoQA workflow status"></a></td>
+              <td class="stack">Cypress &middot; Faker</td>
+              <td class="app">demoqa.com</td>
+              <td class="num">28</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/HeroKuApp" target="_blank" rel="noopener">HeroKuApp</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/herokuapp.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/herokuapp.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="CURA Healthcare workflow status"></a></td>
+              <td class="stack">Cypress</td>
+              <td class="app">CURA Healthcare</td>
+              <td class="num">15</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/RahulAcademy" target="_blank" rel="noopener">RahulAcademy</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/rahulacademy.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/rahulacademy.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Rahul Shetty Academy workflow status"></a></td>
+              <td class="stack">Cypress</td>
+              <td class="app">rahulshettyacademy.com</td>
+              <td class="num">20</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/Websecurity" target="_blank" rel="noopener">Websecurity</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/websecurity.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/websecurity.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Zero Bank workflow status"></a></td>
+              <td class="stack">Cypress</td>
+              <td class="app">Zero Bank</td>
+              <td class="num">11</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/Voila-BDD" target="_blank" rel="noopener">Voila-BDD</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/voila-bdd.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/voila-bdd.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="voila.id BDD workflow status"></a></td>
+              <td class="stack">Cypress &middot; Cucumber</td>
+              <td class="app">voila.id</td>
+              <td class="num">6 + auth</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/PayEver" target="_blank" rel="noopener">PayEver</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/payever.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/payever.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="PayEver workflow status"></a></td>
+              <td class="stack">Cypress</td>
+              <td class="app">PayEver commerceOS</td>
+              <td class="num">5 + auth</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/DraftCypressFile" target="_blank" rel="noopener">DraftCypressFile</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/template.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/template.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Starter Template workflow status"></a></td>
+              <td class="stack">Cypress template</td>
+              <td class="app">example.cypress.io</td>
+              <td class="num">5</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/HivanA98/Cypress-CodeJS/tree/main/API_Karate_Framework" target="_blank" rel="noopener">API_Karate_Framework</a></th>
+              <td class="ci-cell"><a href="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/karate.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Cypress-CodeJS/actions/workflows/karate.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Karate API workflow status"></a></td>
+              <td class="stack">Karate &middot; JUnit 5</td>
+              <td class="app">JSONPlaceholder</td>
+              <td class="num">16</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="paper-section" aria-labelledby="techniques">
+      <div class="wrap">
+        <h2 id="techniques">Techniques on show</h2>
+        <ul class="feature-list">
+          <li><strong>Page Object Model</strong> with chainable actions and reusable components, in every project under <span class="inline-code">cypress/pages</span>.</li>
+          <li><strong>BDD with Gherkin</strong> — Scenario Outlines, Data Tables and a tag strategy, in the three BDD projects.</li>
+          <li><strong>Network stubbing</strong> with <span class="inline-code">cy.intercept</span>, so the UI can be tested without reaching a protected backend.</li>
+          <li><strong>Fast, stable logins</strong> using <span class="inline-code">cy.session()</span> and API login through <span class="inline-code">cy.request</span>.</li>
+          <li><strong>Generated test data</strong> from fixtures and Faker, so runs do not collide with each other.</li>
+          <li><strong>API testing in Karate</strong> — CRUD, JSON schema validation, chained requests and parallel execution.</li>
+          <li><strong>One reusable workflow</strong> for all twelve pipelines, with one status badge per project.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="paper-nav" aria-label="QA tools navigation">
+      <div class="wrap" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;">
+        <a class="act" href="/qa-tools/">&larr; All QA tools</a>
+        <a class="act" href="/qa-tools/robot-framework/">Robot Framework &rarr;</a>
+      </div>
+    </nav>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>&copy; 2026 Ivan Armadi Hasugian</span>
+      <span class="site-foot-links">
+        <a href="/">Home</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/qa-tools/">QA Tools</a>
+        <a href="/data-science/">Data Science</a>
+        <a href="/publication/">Publications</a>
+        <a href="/training/">Training</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Science — Indonesian sentiment analysis, rebuilt</title>
+  <meta name="description" content="Two Binar Academy challenges rebuilt from scratch to remove data leakage: macro-F1 rose from 0.797 to 0.857 and training went from about 124 seconds to four.">
+  <meta name="author" content="Ivan Armadi Hasugian">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0d0d12">
+  <link rel="canonical" href="https://ivan-armadi-hasugian.my.id/data-science/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ivan Armadi Hasugian">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://ivan-armadi-hasugian.my.id/data-science/">
+  <meta property="og:title" content="Data Science — Indonesian sentiment analysis, rebuilt">
+  <meta property="og:description" content="Two Binar Academy challenges rebuilt from scratch to remove data leakage: macro-F1 rose from 0.797 to 0.857 and training went from about 124 seconds to four.">
+  <meta property="og:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta property="og:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Data Science — Indonesian sentiment analysis, rebuilt">
+  <meta name="twitter:description" content="Two Binar Academy challenges rebuilt from scratch to remove data leakage: macro-F1 rose from 0.797 to 0.857 and training went from about 124 seconds to four.">
+  <meta name="twitter:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta name="twitter:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://ivan-armadi-hasugian.my.id/data-science/#webpage",
+      "url": "https://ivan-armadi-hasugian.my.id/data-science/",
+      "name": "Data Science",
+      "description": "Indonesian NLP and sentiment analysis: two Binar Academy challenges rebuilt leakage-free.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://ivan-armadi-hasugian.my.id/#website" },
+      "about": { "@id": "https://ivan-armadi-hasugian.my.id/#person" }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "DataScience-BinarAcademy",
+      "description": "Indonesian-language NLP and sentiment analysis, from text cleansing to a Flask and Swagger API.",
+      "codeRepository": "https://github.com/HivanA98/DataScience-BinarAcademy",
+      "programmingLanguage": "Python",
+      "author": { "@id": "https://ivan-armadi-hasugian.my.id/#person" },
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ivan-armadi-hasugian.my.id/"},
+        {"@type": "ListItem", "position": 2, "name": "Data Science", "item": "https://ivan-armadi-hasugian.my.id/data-science/"}
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ivan-armadi-hasugian.my.id/#person",
+      "name": "Ivan Armadi Hasugian",
+      "url": "https://ivan-armadi-hasugian.my.id/",
+      "sameAs": [
+        "https://www.linkedin.com/in/hivanarmadi/",
+        "https://github.com/HivanA98",
+        "https://orcid.org/0009-0006-7501-891X"
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/work.css">
+</head>
+<body class="page page-flex has-sitebar">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="site-bar">
+    <a class="site-brand" href="/">
+      <span class="site-brand-mark" aria-hidden="true"></span>
+      <span class="site-brand-text">Ivan Armadi Hasugian</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/qa-tools/">QA Tools</a></li>
+        <li><a href="/data-science/" aria-current="page">Data Science</a></li>
+        <li><a href="/publication/">Publications</a></li>
+        <li><a href="/training/">Training</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <header class="paper-head">
+      <div class="wrap">
+          <ol class="crumbs">
+            <li><a href="/">Home</a></li>
+            <li><span aria-current="page">Data Science</span></li>
+          </ol>
+        <p class="paper-journal">
+          <span class="paper-kind">Indonesian NLP</span>
+          <span>2 challenges &middot; Binar Academy &middot; rebuilt from scratch</span>
+          <a href="https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/gold.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/gold.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Gold Challenge CI status"></a> <a href="https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/platinum.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/platinum.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Platinum Challenge CI status"></a>
+        </p>
+        <h1 class="paper-title">Better methodology beat a bigger model</h1>
+        <p class="page-lede">
+          Two sentiment-analysis challenges from a Binar Academy bootcamp,
+          rebuilt from scratch because the original notebooks leaked test data
+          into training. Fixing the method &mdash; not reaching for a heavier
+          model &mdash; is what moved the numbers.
+        </p>
+        <div class="paper-actions">
+          <a class="act act-primary" href="https://github.com/HivanA98/DataScience-BinarAcademy" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="act" href="https://github.com/HivanA98/DataScience-BinarAcademy/actions" target="_blank" rel="noopener">CI runs</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="paper-section" aria-labelledby="results">
+      <div class="wrap">
+        <h2 id="results">What changed</h2>
+        <div class="proj-table-wrap">
+        <table class="result-table">
+          <caption class="visually-hidden">Original recipe compared with the refactored pipeline</caption>
+          <thead>
+            <tr>
+              <th scope="col">Metric</th>
+              <th scope="col">Original recipe</th>
+              <th scope="col">Refactored</th>
+              <th scope="col">Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Accuracy</th><td>0.838</td><td class="better">0.886</td><td class="delta">+4.8 pts</td></tr>
+            <tr><th scope="row">Macro-F1</th><td>0.797</td><td class="better">0.857</td><td class="delta">+6.0 pts</td></tr>
+            <tr><th scope="row">Neutral-class recall</th><td>0.73</td><td class="better">0.79</td><td class="delta">+6 pts</td></tr>
+            <tr><th scope="row">Training time</th><td>~124 s</td><td class="better">~4 s</td><td class="delta">~30&times; faster</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="paper-licence">
+          All figures are leakage-free, from 5-fold stratified cross-validation over about
+          11,000 rows.
+        </p>
+      </div>
+    </section>
+
+    <section class="paper-section" aria-labelledby="why">
+      <div class="wrap">
+        <h2 id="why">Why it improved</h2>
+        <ul class="feature-list">
+          <li><strong>The leak came first.</strong> The original fitted the vectoriser before splitting, so the model had already seen the test vocabulary. Everything measured after that was optimistic.</li>
+          <li><strong>The right metric.</strong> Accuracy flatters an imbalanced three-class problem; macro-F1 exposes how badly the neutral class was doing.</li>
+          <li><strong>Negation kept.</strong> Standard stopword lists delete words like <span class="inline-code">tidak</span>, which inverts the sentiment they are meant to measure.</li>
+          <li><strong>A model that suits the data.</strong> Sparse, high-dimensional text does not need a heavyweight model &mdash; which is also why training dropped to about four seconds.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="paper-section" aria-labelledby="challenges">
+      <div class="wrap">
+        <h2 id="challenges">The two challenges</h2>
+        <ul class="tool-grid">
+          <li>
+            <a class="tool-card" href="/data-science/gold-challenge/">
+              <span class="tool-count">Gold Challenge</span>
+              <h3>Text cleansing + sentiment API</h3>
+              <p>An Indonesian text-cleansing module and a Flask plus Swagger REST API that serves the trained model, including bulk prediction from an uploaded CSV.</p>
+              <span class="tool-foot">Accuracy 0.887 &middot; Macro-F1 0.854</span>
+            </a>
+          </li>
+          <li>
+            <a class="tool-card" href="/data-science/platinum-challenge/">
+              <span class="tool-count">Platinum Challenge</span>
+              <h3>Three-class sentiment classifier</h3>
+              <p>Negative, neutral and positive classification with a reproducible benchmark that regenerates every number in the repository from scratch.</p>
+              <span class="tool-foot">Accuracy 0.886 &middot; Macro-F1 0.857</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>&copy; 2026 Ivan Armadi Hasugian</span>
+      <span class="site-foot-links">
+        <a href="/">Home</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/qa-tools/">QA Tools</a>
+        <a href="/data-science/">Data Science</a>
+        <a href="/publication/">Publications</a>
+        <a href="/training/">Training</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>

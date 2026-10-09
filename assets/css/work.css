@@ -1,0 +1,265 @@
+/* ============================================================
+   work.css — /qa-tools/, /data-science/ and /training/
+   Loaded after site.css, which supplies .page, .crumbs,
+   .paper-head, .act and .stats.
+   ============================================================ */
+
+/* ---------- project table with live CI status ---------- */
+
+.proj-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+}
+
+.proj-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  background: var(--page-surface);
+}
+
+.proj-table caption {
+  caption-side: bottom;
+  padding: 0.85rem 1rem;
+  font-size: 0.78rem;
+  color: #6f6f80;
+  text-align: left;
+}
+
+.proj-table th,
+.proj-table td {
+  padding: 0.72rem 0.9rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--page-line);
+  white-space: nowrap;
+}
+
+.proj-table thead th {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6f6f80;
+  background: #16161f;
+}
+
+.proj-table tbody tr:last-child th,
+.proj-table tbody tr:last-child td { border-bottom: 0; }
+
+.proj-table tbody tr:hover { background: #181822; }
+
+.proj-table th[scope="row"] { font-weight: 600; color: var(--page-text); }
+
+.proj-table a { color: #f0889a; text-decoration: none; }
+.proj-table a:hover { color: #fff; text-decoration: underline; }
+
+.proj-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--page-muted);
+}
+
+.proj-table .stack { color: var(--page-muted); white-space: normal; min-width: 11ch; }
+.proj-table .app { color: var(--page-muted); }
+
+/* The badge is a live SVG from GitHub: it changes by itself whenever the
+   workflow runs, so nothing here needs updating when a build goes red. */
+.ci-badge { display: block; height: 20px; width: auto; }
+.ci-cell { width: 1%; }
+
+/* ---------- a tool's headline block ---------- */
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 1.4rem 1.45rem 1.5rem;
+  background: var(--page-surface);
+  border: 1px solid var(--page-line);
+  border-top: 2px solid rgba(209, 21, 42, 0.5);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+a.tool-card:hover,
+a.tool-card:focus-visible {
+  border-color: rgba(209, 21, 42, 0.6);
+  background: #181822;
+  transform: translateY(-2px);
+  color: inherit;
+}
+
+a.tool-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.tool-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.tool-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--page-muted);
+}
+
+.tool-count {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+  color: #f0889a;
+}
+
+.tool-foot {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  font-size: 0.74rem;
+  color: #6f6f80;
+}
+
+/* ---------- plain feature list ---------- */
+
+.feature-list {
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.feature-list li {
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #d8d8e2;
+}
+
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  left: -1.1rem;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f0889a;
+}
+
+.feature-list strong { color: #fff; font-weight: 600; }
+.feature-list code, .inline-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: #1c1c26;
+  color: #e2c3ea;
+}
+
+/* ---------- before / after results ---------- */
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  background: var(--page-surface);
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.result-table th,
+.result-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--page-line);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.result-table th[scope="row"] { text-align: left; font-weight: 600; white-space: nowrap; }
+
+.result-table thead th {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6f6f80;
+  background: #16161f;
+  text-align: right;
+}
+
+.result-table thead th:first-child { text-align: left; }
+.result-table tbody tr:last-child th,
+.result-table tbody tr:last-child td { border-bottom: 0; }
+
+.result-table .better { color: #4fbf85; font-weight: 700; }
+.result-table .delta { color: #4fbf85; font-size: 0.82rem; }
+
+/* ---------- code block ---------- */
+
+.code-block {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  background: #0f0f16;
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #c4c4d0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ---------- a definition row (endpoint tables etc.) ---------- */
+
+.api-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+
+.api-table th, .api-table td {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--page-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.api-table thead th {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6f6f80;
+}
+
+.api-table tbody tr:last-child th,
+.api-table tbody tr:last-child td { border-bottom: 0; }
+
+.api-method {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.api-get { color: #4fa3d1; }
+.api-post { color: #4fbf85; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-card { transition: none; }
+}
