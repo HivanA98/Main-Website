@@ -1,0 +1,472 @@
+/* ============================================================
+   site.css — kerangka bersama seluruh situs
+   ------------------------------------------------------------
+   Dimuat di SEMUA halaman, dan selalu SETELAH css per-bagian
+   (portfolio.css / kaiwa.css / keigo.css). Urutan itu penting:
+   portfolio.css memakai pemilih telanjang `header` dan `nav`,
+   jadi aturan bilah situs di sini sengaja memakai kelas
+   (.site-bar / .site-nav) agar menang lewat kekhususan.
+
+   Bilah situs memakai token sendiri, tidak mewarisi --bg-color
+   dkk, supaya tampil sama di atas halaman gelap (portofolio)
+   maupun terang (halaman Jepang bertema washi).
+   ============================================================ */
+
+:root {
+  --site-bar-h: 44px;
+  --site-bar-bg: #0b0b10;
+  --site-bar-line: rgba(255, 255, 255, 0.1);
+  --site-bar-text: #9c9cab;
+  --site-bar-text-on: #ffffff;
+  --site-accent-a: #7a1b7e;
+  --site-accent-b: #d1152a;
+  --site-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- bilah navigasi situs ---------- */
+
+.site-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--site-bar-h);
+  z-index: 1600;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 clamp(12px, 5vw, 48px);
+  background: var(--site-bar-bg);
+  border-bottom: 1px solid var(--site-bar-line);
+  font-family: var(--site-font);
+  box-sizing: border-box;
+}
+
+.site-bar .site-brand {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--site-font);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--site-bar-text-on);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-bar .site-brand .site-brand-mark {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--site-accent-a), var(--site-accent-b));
+}
+
+.site-bar .site-brand:hover .site-brand-text,
+.site-bar .site-brand:focus-visible .site-brand-text {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Menang atas `nav { position: fixed; ... }` di portfolio.css
+   (.site-nav = 0-1-0 mengalahkan nav = 0-0-1). */
+.site-bar .site-nav {
+  position: static;
+  top: auto;
+  right: auto;
+  width: auto;
+  height: auto;
+  background: none;
+  backdrop-filter: none;
+  border: 0;
+  transform: none;
+  transition: none;
+  z-index: auto;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.site-bar .site-nav::-webkit-scrollbar { display: none; }
+
+.site-bar .site-nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(0.75rem, 2.4vw, 1.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: var(--site-bar-h);
+}
+
+.site-bar .site-nav li { flex: 0 0 auto; }
+
+.site-bar .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  height: var(--site-bar-h);
+  padding: 0;
+  border: 0;
+  font-family: var(--site-font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--site-bar-text);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.site-bar .site-nav a:hover { color: var(--site-bar-text-on); }
+
+/* Penanda halaman aktif. Dasarnya aria-current, jadi penanda
+   visual dan penanda untuk pembaca layar tidak bisa berbeda. */
+.site-bar .site-nav a[aria-current="page"] { color: var(--site-bar-text-on); }
+
+.site-bar .site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: auto;
+  background: linear-gradient(90deg, var(--site-accent-a), var(--site-accent-b));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.site-bar .site-nav a[aria-current="page"]::after { transform: scaleX(1); }
+
+.site-bar .site-nav a:focus-visible,
+.site-bar .site-brand:focus-visible,
+.skip-link:focus-visible {
+  outline: 2px solid var(--site-bar-text-on);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------- lompat ke konten ---------- */
+
+.skip-link,
+.skip-link:link,
+.skip-link:visited {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 2200;
+  padding: 8px 14px;
+  background: var(--site-bar-bg);
+  color: var(--site-bar-text-on);
+  font-family: var(--site-font);
+  font-size: 0.85rem;
+  text-decoration: none;
+  border: 1px solid var(--site-bar-line);
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus { top: 8px; }
+
+/* ============================================================
+   Offset: memberi ruang bagi bilah situs
+   ------------------------------------------------------------
+   Halaman portofolio punya header fixed 80px sendiri, jadi ia
+   perlu penggeseran berlapis. Aturan di sini memakai
+   body.has-sitebar agar portfolio.css tetap identik dengan
+   berkas asli di repo lama (memudahkan diff di kemudian hari).
+   ============================================================ */
+
+body.has-sitebar { padding-top: var(--site-bar-h); }
+
+/* Sasaran tautan "lompat ke konten" tidak boleh tersembunyi di balik
+   bilah yang fixed. Halaman berheader sendiri menimpanya di bawah. */
+body.has-sitebar main[id] { scroll-margin-top: calc(var(--site-bar-h) + 12px); }
+
+/* Halaman dengan header fixed miliknya sendiri (portofolio):
+   padding-top tidak dipakai, penggeseran dilakukan manual. */
+body.has-sitebar.has-own-header {
+  padding-top: 0;
+  --stack-h: calc(var(--site-bar-h) + var(--nav-height, 80px));
+}
+
+body.has-sitebar.has-own-header header { top: var(--site-bar-h); }
+
+body.has-sitebar.has-own-header main { margin-top: var(--stack-h); }
+
+body.has-sitebar.has-own-header .hero-viewport {
+  min-height: calc(100vh - var(--stack-h));
+}
+
+body.has-sitebar.has-own-header section[id],
+body.has-sitebar.has-own-header div[id],
+body.has-sitebar.has-own-header main[id] {
+  scroll-margin-top: calc(var(--stack-h) + 12px);
+}
+
+/* Halaman Jepang: body-nya sudah punya padding 28px sendiri, jadi
+   tinggi bilah situs ditambahkan di atasnya, bukan menggantikannya. */
+body.has-sitebar.has-washi { padding-top: calc(var(--site-bar-h) + 28px); }
+
+body.has-sitebar.has-own-header .scroll-progress { top: var(--site-bar-h); }
+
+/* portfolio.css menyetel scroll-padding-top: var(--nav-height); tambahkan
+   tinggi bilah situs agar navigasi hash bawaan peramban ikut tepat. */
+html:has(> body.has-sitebar.has-own-header) { scroll-padding-top: calc(44px + 80px); }
+
+/* Panel geser nav mobile portofolio.
+   CATATAN: <header> memakai backdrop-filter, sehingga ia menjadi
+   containing block bagi keturunan position:fixed. `top` panel karena itu
+   dihitung dari sisi atas header, bukan dari viewport — nilai asli
+   var(--nav-height) sudah tepat dan JANGAN ditambah tinggi bilah situs,
+   atau panel turun 44px terlalu jauh. Hanya tingginya yang perlu
+   dikoreksi, sebab satuan vh tetap relatif terhadap viewport.
+   `:not(.site-nav)` agar bilah situs tidak ikut jadi panel geser. */
+@media (max-width: 968px) {
+  body.has-sitebar.has-own-header nav:not(.site-nav) {
+    height: calc(100vh - var(--stack-h));
+  }
+}
+
+/* ============================================================
+   Halaman sederhana (landing, publikasi, 404)
+   ============================================================ */
+
+.page {
+  --page-bg: #0d0d12;
+  --page-surface: #13131a;
+  --page-line: rgba(255, 255, 255, 0.08);
+  --page-text: #ffffff;
+  --page-muted: #a0a0ab;
+}
+
+.page {
+  margin: 0;
+  background-color: var(--page-bg);
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(122, 27, 126, 0.1) 0%, transparent 42%),
+    radial-gradient(circle at 88% 18%, rgba(209, 21, 42, 0.07) 0%, transparent 42%);
+  background-repeat: no-repeat;
+  color: var(--page-text);
+  font-family: var(--site-font);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+.page *,
+.page *::before,
+.page *::after { box-sizing: border-box; }
+
+.wrap {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-head { padding: clamp(2.5rem, 8vw, 4.5rem) 0 clamp(1.5rem, 4vw, 2.25rem); }
+
+.page-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--page-muted);
+  margin-bottom: 0.9rem;
+}
+
+.page h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.9rem, 6vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.page-lede {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--page-muted);
+  font-size: clamp(0.96rem, 2.4vw, 1.06rem);
+}
+
+.page h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.15rem, 3.4vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.page section { padding-bottom: clamp(2rem, 6vw, 3.25rem); }
+
+.page a { color: #f0889a; }
+.page a:hover { color: #ffffff; }
+
+/* ---------- kartu tujuan di landing ---------- */
+
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a.dest-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  height: 100%;
+  padding: 1.35rem 1.4rem 1.5rem;
+  background: var(--page-surface);
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+a.dest-card:hover,
+a.dest-card:focus-visible {
+  border-color: rgba(209, 21, 42, 0.55);
+  background: #181822;
+  transform: translateY(-2px);
+  color: inherit;
+}
+
+a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.dest-path {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+  color: #f0889a;
+  letter-spacing: 0.01em;
+}
+
+.dest-title {
+  font-size: 1.04rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.dest-title :lang(ja) { font-weight: 600; }
+
+.dest-desc {
+  margin: 0;
+  font-size: 0.87rem;
+  color: var(--page-muted);
+  line-height: 1.55;
+}
+
+.dest-meta {
+  margin-top: auto;
+  padding-top: 0.7rem;
+  font-size: 0.74rem;
+  color: #6f6f80;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- kaki halaman bersama ---------- */
+
+.site-foot {
+  margin-top: auto;
+  padding: 1.75rem 0 2.25rem;
+  border-top: 1px solid var(--page-line, rgba(255, 255, 255, 0.08));
+  font-family: var(--site-font);
+  font-size: 0.8rem;
+  color: #83838f;
+}
+
+.site-foot .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.site-foot a { color: #83838f; text-decoration: none; }
+.site-foot a:hover { color: #fff; text-decoration: underline; }
+.site-foot-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.1rem; }
+
+/* min-height dikurangi tinggi bilah, sebab body sudah ber-padding-top
+   sebesar itu — tanpa ini halaman pendek ikut melebihi viewport. */
+.page.page-flex {
+  min-height: calc(100vh - var(--site-bar-h));
+  display: flex;
+  flex-direction: column;
+}
+
+.page.page-flex main { flex: 1 0 auto; }
+
+/* ---------- 404 ---------- */
+
+.nf {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(3rem, 14vh, 7rem) 20px;
+}
+
+.nf-code {
+  font-size: clamp(3.6rem, 16vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--site-accent-a), var(--site-accent-b));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nf h1 { margin: 1rem 0 0.75rem; font-size: clamp(1.25rem, 4.5vw, 1.55rem); }
+.nf p { margin: 0 auto 1.75rem; max-width: 46ch; color: var(--page-muted); font-size: 0.94rem; }
+
+.btn-primary {
+  display: inline-block;
+  padding: 11px 24px;
+  background: linear-gradient(90deg, var(--site-accent-b), var(--site-accent-a));
+  border-radius: 4px;
+  color: #fff !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.btn-primary:hover { opacity: 0.88; }
+
+/* ---------- utilitas ---------- */
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav a,
+  .site-nav a::after,
+  a.dest-card,
+  .skip-link,
+  .btn-primary { transition: none; }
+}
