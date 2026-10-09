@@ -94,13 +94,19 @@
 
 .site-bar .site-nav::-webkit-scrollbar { display: none; }
 
+/* width:max-content + margin-left:auto, NOT justify-content:flex-end.
+   In an overflowing scroll container, flex-end pushes the overflow off the
+   LEFT edge where it cannot be scrolled to — that is what cut "Portfolio"
+   down to "olio" on a phone. With max-content the list overflows to the
+   right instead, and the auto margin still right-aligns it while it fits. */
 .site-bar .site-nav ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  width: max-content;
+  margin: 0 0 0 auto;
   gap: clamp(0.75rem, 2.4vw, 1.75rem);
-  margin: 0;
   padding: 0;
   list-style: none;
   height: var(--site-bar-h);
@@ -153,6 +159,18 @@
   outline: 2px solid var(--site-bar-text-on);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* ---------- narrow screens ---------- */
+
+/* The bar carries the brand plus every section link. Below ~600px the two
+   compete for the same row, so the brand drops to its mark alone (still a
+   link home) and the nav gets the width back. */
+@media (max-width: 600px) {
+  .site-bar { gap: 0.6rem; }
+  .site-bar .site-brand-text { display: none; }
+  .site-bar .site-nav a { font-size: 0.8rem; }
+  .site-bar .site-nav ul { gap: 0.95rem; }
 }
 
 /* ---------- lompat ke konten ---------- */
