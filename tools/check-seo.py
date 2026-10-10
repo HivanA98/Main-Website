@@ -208,6 +208,62 @@ if os.path.isfile(os.path.join(ROOT, "404.html")):
     if "noindex" not in (meta(read("404.html"), "robots") or ""):
         errors.append("404.html: should be noindex")
 
+# ---- schema.org date values ----
+# Search Console reported "Invalid datetime value for dateModified" because
+# a bare date was used where Google's Profile page spec types the field as
+# DateTime. Date-only is fine for datePublished on an article, but
+# dateCreated/dateModified on a ProfilePage must carry a time and offset.
+ISO_DATE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
+ISO_DATETIME = re.compile(
+    r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$")
+
+
+def walk_nodes(node):
+    """Yield every dict in a JSON-LD tree."""
+    if isinstance(node, dict):
+        yield node
+        for v in node.values():
+            for n in walk_nodes(v):
+                yield n
+    elif isinstance(node, list):
+        for v in node:
+            for n in walk_nodes(v):
+                yield n
+
+
+for rel in pages:
+    for blk in re.findall(r'<script type="application/ld\+json">(.*?)</script>',
+                          read(rel), re.S):
+        try:
+            data = json.loads(blk)
+        except Exception:
+            continue                      # already reported above
+        for node in walk_nodes(data):
+            ntype = node.get("@type")
+            for field in ("dateCreated", "dateModified", "datePublished"):
+                val = node.get(field)
+                if not isinstance(val, str):
+                    continue
+                if ISO_DATETIME.match(val):
+                    continue
+                if not ISO_DATE.match(val):
+                    err(rel, "%s on %s is not ISO 8601: %r" % (field, ntype, val))
+                elif ntype == "ProfilePage" and field != "datePublished":
+                    err(rel, "%s on ProfilePage is date-only (%r); Google types "
+                             "it as DateTime, so give it a time and offset"
+                        % (field, val))
+
+    # a ProfilePage without dateModified loses the field in the rich result
+    for blk in re.findall(r'<script type="application/ld\+json">(.*?)</script>',
+                          read(rel), re.S):
+        try:
+            data = json.loads(blk)
+        except Exception:
+            continue
+        for node in walk_nodes(data):
+            if node.get("@type") == "ProfilePage" and "dateModified" not in node:
+                warn(rel, "ProfilePage has no dateModified")
+
 # ---- orphan check: content links, not nav boilerplate ----
 # A link repeated in the nav bar on every page carries little weight. What
 # matters is whether a page is reachable from another page's BODY. Without
