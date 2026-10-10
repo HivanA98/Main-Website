@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playwright + pytest — 52 tests on three browsers</title>
+  <meta name="description" content="UI, end-to-end and HTTP-level API tests for Saucedemo with Playwright and pytest, running on Chromium, Firefox and WebKit on every push and nightly.">
+  <meta name="author" content="Ivan Armadi Hasugian">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0d0d12">
+  <link rel="canonical" href="https://ivan-armadi-hasugian.my.id/qa-tools/playwright/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ivan Armadi Hasugian">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://ivan-armadi-hasugian.my.id/qa-tools/playwright/">
+  <meta property="og:title" content="Playwright + pytest — 52 tests on three browsers">
+  <meta property="og:description" content="UI, end-to-end and HTTP-level API tests for Saucedemo with Playwright and pytest, running on Chromium, Firefox and WebKit on every push and nightly.">
+  <meta property="og:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta property="og:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Playwright + pytest — 52 tests on three browsers">
+  <meta name="twitter:description" content="UI, end-to-end and HTTP-level API tests for Saucedemo with Playwright and pytest, running on Chromium, Firefox and WebKit on every push and nightly.">
+  <meta name="twitter:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta name="twitter:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ivan-armadi-hasugian.my.id/qa-tools/playwright/#webpage",
+      "url": "https://ivan-armadi-hasugian.my.id/qa-tools/playwright/",
+      "name": "Playwright + pytest",
+      "description": "52 Playwright tests for Saucedemo across three browsers.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://ivan-armadi-hasugian.my.id/#website" },
+      "about": { "@id": "https://ivan-armadi-hasugian.my.id/#person" }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Playwright_Python",
+      "description": "UI, E2E and API test automation for Saucedemo with Playwright and pytest.",
+      "codeRepository": "https://github.com/HivanA98/Playwright_Python",
+      "programmingLanguage": "Python",
+      "author": { "@id": "https://ivan-armadi-hasugian.my.id/#person" },
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ivan-armadi-hasugian.my.id/"},
+        {"@type": "ListItem", "position": 2, "name": "QA Tools", "item": "https://ivan-armadi-hasugian.my.id/qa-tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Playwright", "item": "https://ivan-armadi-hasugian.my.id/qa-tools/playwright/"}
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ivan-armadi-hasugian.my.id/#person",
+      "name": "Ivan Armadi Hasugian",
+      "url": "https://ivan-armadi-hasugian.my.id/",
+      "sameAs": [
+        "https://www.linkedin.com/in/hivanarmadi/",
+        "https://github.com/HivanA98",
+        "https://orcid.org/0009-0006-7501-891X"
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/work.css">
+</head>
+<body class="page page-flex has-sitebar">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="site-bar">
+    <a class="site-brand" href="/">
+      <span class="site-brand-mark" aria-hidden="true"></span>
+      <span class="site-brand-text">Ivan Armadi Hasugian</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/qa-tools/" aria-current="page">QA Tools</a></li>
+        <li><a href="/data-science/">Data Science</a></li>
+        <li><a href="/publication/">Publications</a></li>
+        <li><a href="/training/">Training</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <header class="paper-head">
+      <div class="wrap">
+          <ol class="crumbs">
+            <li><a href="/">Home</a></li>
+            <li><a href="/qa-tools/">QA Tools</a></li>
+            <li><span aria-current="page">Playwright</span></li>
+          </ol>
+        <p class="paper-journal">
+          <span class="paper-kind">Playwright &middot; pytest</span>
+          <span>52 tests &middot; 3 browsers &middot; nightly</span>
+          <a href="https://github.com/HivanA98/Playwright_Python/actions/workflows/tests.yml" target="_blank" rel="noopener"><img class="ci-badge" src="https://github.com/HivanA98/Playwright_Python/actions/workflows/tests.yml/badge.svg" height="20" loading="lazy" decoding="async" alt="Playwright tests workflow status"></a>
+        </p>
+        <h1 class="paper-title">Playwright + pytest</h1>
+        <p class="page-lede">
+          One shop, tested three ways: through the interface, as complete
+          purchase journeys, and directly over HTTP. Every push, pull request
+          and nightly schedule runs the whole set on Chromium, Firefox and
+          WebKit.
+        </p>
+        <div class="paper-actions">
+          <a class="act act-primary" href="https://github.com/HivanA98/Playwright_Python" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="act" href="https://github.com/HivanA98/Playwright_Python/actions/workflows/tests.yml" target="_blank" rel="noopener">CI runs</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="paper-section" aria-labelledby="breakdown">
+      <div class="wrap">
+        <h2 id="breakdown">What the 52 tests cover</h2>
+        <div class="proj-table-wrap">
+          <table class="proj-table">
+            <thead>
+              <tr>
+                <th scope="col">Layer</th>
+                <th scope="col">Covers</th>
+                <th scope="col" class="num">Tests</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">UI</th><td class="stack">Login, catalogue, sorting, product details, form validation and network behaviour</td><td class="num">26</td></tr>
+              <tr><th scope="row">End-to-end</th><td class="stack">Complete shopping journeys across pages and user types</td><td class="num">12</td></tr>
+              <tr><th scope="row">Known bugs</th><td class="stack">Saucedemo's deliberately broken users, marked as strict expected failures</td><td class="num">7</td></tr>
+              <tr><th scope="row">API</th><td class="stack">HTTP-level checks that bypass the interface entirely</td><td class="num">7</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="paper-licence">
+          A green run reports <span class="inline-code">45 passed, 7 xfailed</span>. The seven are
+          bugs the application ships on purpose; recording them as expected failures means the
+          suite goes red if one is ever fixed, instead of quietly passing.
+        </p>
+      </div>
+    </section>
+
+    <section class="paper-section" aria-labelledby="design">
+      <div class="wrap">
+        <h2 id="design">How it is built</h2>
+        <ul class="feature-list">
+          <li><strong>Page Object Model</strong> with reusable components, so a layout change touches one file.</li>
+          <li><strong>Browser matrix in CI.</strong> The API job runs once; UI and end-to-end jobs fan out across Chromium, Firefox and WebKit.</li>
+          <li><strong>Strict xfail</strong> for known defects, which turns a silent regression into a failing build.</li>
+          <li><strong>Runs nightly</strong> as well as on push, so breakage caused by the application itself is caught without a commit.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="paper-nav" aria-label="Section navigation">
+      <div class="wrap" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;">
+        <a class="act" href="/qa-tools/robot-framework/">&larr; Robot Framework</a>
+        <a class="act" href="/qa-tools/">All QA tools &rarr;</a>
+      </div>
+    </nav>
+
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>&copy; 2026 Ivan Armadi Hasugian</span>
+      <span class="site-foot-links">
+        <a href="/">Home</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/qa-tools/">QA Tools</a>
+        <a href="/data-science/">Data Science</a>
+        <a href="/publication/">Publications</a>
+        <a href="/training/">Training</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>

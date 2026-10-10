@@ -22,12 +22,24 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 ROOT = os.path.abspath(ROOT)
 DOMAIN = "ivan-armadi-hasugian.my.id"
 
-PAGES = ["index.html", "404.html", "portfolio/index.html",
-         "publication/index.html",
-         "publication/literature-review-on-the-therapeutic-potential-of-bacteriophages-against-resistant-staphylococcus-aureus/index.html",
-         "publication/in-silico-characterization-of-lysis-and-host-recognition-modules-in-staphylococcus-aureus-bacteriophage-genomes/index.html",
-         "kaiwa/index.html",
-         "kaiwa-keigo/index.html"]
+PAGES = [
+    "index.html",
+    "portfolio/index.html",
+    "qa-tools/index.html",
+    "qa-tools/cypress/index.html",
+    "qa-tools/robot-framework/index.html",
+    "qa-tools/playwright/index.html",
+    "data-science/index.html",
+    "data-science/gold-challenge/index.html",
+    "data-science/platinum-challenge/index.html",
+    "publication/index.html",
+    "publication/literature-review-on-the-therapeutic-potential-of-bacteriophages-against-resistant-staphylococcus-aureus/index.html",
+    "publication/in-silico-characterization-of-lysis-and-host-recognition-modules-in-staphylococcus-aureus-bacteriophage-genomes/index.html",
+    "training/index.html",
+    "training/kaiwa/index.html",
+    "training/kaiwa-keigo/index.html",
+    "404.html",
+]
 
 errors = []
 warnings = []
@@ -119,6 +131,8 @@ for dirpath, dirnames, filenames in os.walk(ROOT):
         path = os.path.join(dirpath, name)
         if os.path.abspath(path) == os.path.abspath(__file__):
             continue            # this file names the old path on purpose
+        if rel(path) in ("kaiwa/index.html", "kaiwa-keigo/index.html"):
+            continue            # redirect stubs, not content pages
         try:
             with io.open(path, encoding="utf-8", newline="") as fh:
                 body = fh.read()
@@ -168,12 +182,19 @@ if navs:
 EXPECTED_ACTIVE = {
     "index.html": "/",
     "portfolio/index.html": "/portfolio/",
+    "qa-tools/index.html": "/qa-tools/",
+    "qa-tools/cypress/index.html": "/qa-tools/",
+    "qa-tools/robot-framework/index.html": "/qa-tools/",
+    "qa-tools/playwright/index.html": "/qa-tools/",
+    "data-science/index.html": "/data-science/",
+    "data-science/gold-challenge/index.html": "/data-science/",
+    "data-science/platinum-challenge/index.html": "/data-science/",
     "publication/index.html": "/publication/",
-    # detail pages keep the section entry lit
     "publication/literature-review-on-the-therapeutic-potential-of-bacteriophages-against-resistant-staphylococcus-aureus/index.html": "/publication/",
     "publication/in-silico-characterization-of-lysis-and-host-recognition-modules-in-staphylococcus-aureus-bacteriophage-genomes/index.html": "/publication/",
-    "kaiwa/index.html": "/kaiwa/",
-    "kaiwa-keigo/index.html": "/kaiwa-keigo/",
+    "training/index.html": "/training/",
+    "training/kaiwa/index.html": "/training/",
+    "training/kaiwa-keigo/index.html": "/training/",
     "404.html": None,          # 404 matches no nav entry
 }
 for page, want in EXPECTED_ACTIVE.items():

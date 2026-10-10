@@ -8,7 +8,7 @@
    - romaji cocok dengan bacaan kana (toleran spasi, tanda baca,
      partikel は/へ/を = wa/e/wo, dan apostrof n')
    - kartu ganda (jp sama persis)
-   - urutan <script> data di kaiwa/index.html sama dengan berkas di assets/data/kaiwa/
+   - urutan <script> data di training/kaiwa/index.html sama dengan berkas di assets/data/kaiwa/
    ============================================================ */
 
 "use strict";
@@ -21,7 +21,7 @@ const TYPES = ["尊敬語", "謙譲語", "丁寧語", "定型", "普通", "注�
 const ROLES = ["話", "聞"];
 
 /* ---------- muat data persis seperti browser (urutan dari index.html) ---------- */
-const html = fs.readFileSync(path.join(ROOT, "kaiwa", "index.html"), "utf8");
+const html = fs.readFileSync(path.join(ROOT, "training", "kaiwa", "index.html"), "utf8");
 const scripts = [...html.matchAll(/<script src="\/(assets\/data\/kaiwa\/[^"]+)"><\/script>/g)].map((m) => m[1]);
 const onDisk = fs.readdirSync(path.join(ROOT, "assets", "data", "kaiwa")).filter((f) => f.endsWith(".js")).map((f) => "assets/data/kaiwa/" + f);
 

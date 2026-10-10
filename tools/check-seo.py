@@ -42,6 +42,8 @@ def indexable_pages():
             rel = rel.replace("\\", "/")
             if rel.startswith("google") or rel == "404.html":
                 continue          # verification file / error page
+            if rel in ("kaiwa/index.html", "kaiwa-keigo/index.html"):
+                continue          # redirect stubs for the moved paths
             out.append(rel)
     return sorted(out)
 
@@ -205,6 +207,32 @@ if re.search(r"^Disallow:\s*/\s*$", rb, re.M):
 if os.path.isfile(os.path.join(ROOT, "404.html")):
     if "noindex" not in (meta(read("404.html"), "robots") or ""):
         errors.append("404.html: should be noindex")
+
+# ---- orphan check: content links, not nav boilerplate ----
+# A link repeated in the nav bar on every page carries little weight. What
+# matters is whether a page is reachable from another page's BODY. Without
+# this, adding a section and wiring only the nav looks fine while the new
+# pages sit effectively orphaned from the pages that could rank them.
+BAR_RE = re.compile(r'<div class="site-bar">.*?</div>\s*</div>', re.S)
+FOOTER_RE = re.compile(r'<footer class="site-foot">.*?</footer>', re.S)
+
+inbound = {rel: set() for rel in pages}
+for src in pages:
+    body = read(src).split("<body", 1)[-1]
+    body = FOOTER_RE.sub("", BAR_RE.sub("", body))
+    for dst in pages:
+        if dst == src:
+            continue
+        href = "/" if dst == "index.html" else "/" + dst[:-len("index.html")]
+        if 'href="%s"' % href in body:
+            inbound[dst].add(src)
+
+for rel in pages:
+    if rel == "index.html":
+        continue              # the home page needs no inbound content link
+    if not inbound[rel]:
+        warn(rel, "no inbound link from another page's content "
+                  "(reachable only through the nav bar)")
 
 # ---- report ----
 print("audited %d indexable pages\n" % len(pages))

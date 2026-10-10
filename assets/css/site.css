@@ -94,13 +94,19 @@
 
 .site-bar .site-nav::-webkit-scrollbar { display: none; }
 
+/* width:max-content + margin-left:auto, NOT justify-content:flex-end.
+   In an overflowing scroll container, flex-end pushes the overflow off the
+   LEFT edge where it cannot be scrolled to — that is what cut "Portfolio"
+   down to "olio" on a phone. With max-content the list overflows to the
+   right instead, and the auto margin still right-aligns it while it fits. */
 .site-bar .site-nav ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  width: max-content;
+  margin: 0 0 0 auto;
   gap: clamp(0.75rem, 2.4vw, 1.75rem);
-  margin: 0;
   padding: 0;
   list-style: none;
   height: var(--site-bar-h);
@@ -153,6 +159,34 @@
   outline: 2px solid var(--site-bar-text-on);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* ---------- narrow screens ---------- */
+
+/* The bar carries the brand plus every section link. Below ~600px the two
+   compete for the same row, so the brand drops to its mark alone (still a
+   link home) and the nav gets the width back. */
+@media (max-width: 600px) {
+  .site-bar { gap: 0.6rem; }
+  .site-bar .site-brand-text { display: none; }
+  .site-bar .site-nav a { font-size: 0.8rem; }
+  .site-bar .site-nav ul { gap: 0.95rem; }
+}
+
+/* With six sections the links exceed the row on a phone, so the trailing
+   edge fades to show there is more to scroll to. pointer-events:none keeps
+   it from swallowing taps on the last link. */
+@media (max-width: 600px) {
+  .site-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: var(--site-bar-h);
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(11, 11, 16, 0), var(--site-bar-bg));
+  }
 }
 
 /* ---------- lompat ke konten ---------- */
@@ -532,6 +566,180 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 @media (max-width: 560px) {
   .role-row { grid-template-columns: 1fr; }
   .role-when { margin-top: 0.1rem; }
+}
+
+/* ============================================================
+   Page furniture shared by the section pages
+   (publications, qa-tools, data-science, training)
+   ============================================================ */
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.78rem;
+  color: #6f6f80;
+}
+
+.crumbs li { display: flex; align-items: center; gap: 0.35rem; }
+.crumbs li + li::before { content: "/"; color: #46465a; }
+.crumbs a { color: #9c9cab; text-decoration: none; }
+.crumbs a:hover { color: #fff; text-decoration: underline; }
+.crumbs [aria-current="page"] { color: #6f6f80; }
+
+/* ---------- kepala makalah ---------- */
+
+.paper-head {
+  padding: clamp(1.75rem, 6vw, 2.75rem) 0 clamp(1.25rem, 3vw, 1.75rem);
+  border-bottom: 1px solid var(--page-line);
+}
+
+.paper-journal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6f6f80;
+  margin-bottom: 1rem;
+}
+
+.paper-kind {
+  padding: 3px 9px;
+  border-radius: 3px;
+  background: rgba(209, 21, 42, 0.16);
+  border: 1px solid rgba(209, 21, 42, 0.45);
+  color: #f0889a;
+  letter-spacing: 0.08em;
+}
+
+.paper-title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.45rem, 4.6vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+
+.paper-title i { font-style: italic; }
+
+.paper-authors {
+  margin: 0 0 0.35rem;
+  font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+  font-weight: 600;
+  color: #e4e4ec;
+}
+
+.paper-authors sup { color: #f0889a; font-weight: 700; }
+
+.paper-affil {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--page-muted);
+  line-height: 1.5;
+}
+
+/* ---------- tombol aksi ---------- */
+
+.paper-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1.5rem 0 0;
+}
+
+.act {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 10px 18px;
+  border-radius: 4px;
+  border: 1px solid var(--page-line);
+  background: var(--page-surface);
+  color: var(--page-text) !important;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.act:hover { border-color: rgba(209, 21, 42, 0.6); background: #1a1a24; }
+.act:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.act-primary {
+  background: linear-gradient(90deg, var(--site-accent-b), var(--site-accent-a));
+  border-color: transparent;
+}
+
+.act-primary:hover { background: linear-gradient(90deg, #b81226, #6a176d); border-color: transparent; }
+
+.act-note { font-weight: 400; font-size: 0.78rem; opacity: 0.75; }
+
+/* ---------- blok isi ---------- */
+
+.paper-section { padding: clamp(1.75rem, 5vw, 2.5rem) 0 0; }
+
+.paper-section > h2 {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6f6f80;
+  margin-bottom: 0.9rem;
+}
+
+.abstract { font-size: 0.97rem; line-height: 1.72; color: #d8d8e2; }
+.abstract p { margin: 0 0 1rem; }
+.abstract p:last-child { margin-bottom: 0; }
+.abstract i { font-style: italic; }
+
+/* ---------- figures ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  background: var(--page-line);
+  border: 1px solid var(--page-line);
+  border-radius: 8px;
+  overflow: hidden;
+  list-style: none;
+}
+
+.stat {
+  padding: 1.15rem 1.25rem;
+  background: var(--page-surface);
+}
+
+.stat-num {
+  display: block;
+  font-size: clamp(1.45rem, 4.4vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #f0889a, #c87ad0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--page-muted);
 }
 
 /* ---------- utilitas ---------- */

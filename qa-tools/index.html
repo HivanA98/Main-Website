@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Test Automation — Cypress, Robot Framework, Playwright</title>
+  <meta name="description" content="Three public test automation suites: 170+ Cypress and Karate tests, 54 Robot Framework tests, and 52 Playwright tests, all running in GitHub Actions.">
+  <meta name="author" content="Ivan Armadi Hasugian">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0d0d12">
+  <link rel="canonical" href="https://ivan-armadi-hasugian.my.id/qa-tools/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ivan Armadi Hasugian">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://ivan-armadi-hasugian.my.id/qa-tools/">
+  <meta property="og:title" content="QA Test Automation — Cypress, Robot Framework, Playwright">
+  <meta property="og:description" content="Three public test automation suites: 170+ Cypress and Karate tests, 54 Robot Framework tests, and 52 Playwright tests, all running in GitHub Actions.">
+  <meta property="og:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta property="og:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QA Test Automation — Cypress, Robot Framework, Playwright">
+  <meta name="twitter:description" content="Three public test automation suites: 170+ Cypress and Karate tests, 54 Robot Framework tests, and 52 Playwright tests, all running in GitHub Actions.">
+  <meta name="twitter:image" content="https://ivan-armadi-hasugian.my.id/assets/og-image.jpg">
+  <meta name="twitter:image:alt" content="Ivan Armadi Hasugian, QA Engineer">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://ivan-armadi-hasugian.my.id/qa-tools/#webpage",
+      "url": "https://ivan-armadi-hasugian.my.id/qa-tools/",
+      "name": "QA Test Automation",
+      "description": "Public test automation suites in Cypress, Robot Framework and Playwright.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://ivan-armadi-hasugian.my.id/#website" },
+      "about": { "@id": "https://ivan-armadi-hasugian.my.id/#person" },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 3,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://ivan-armadi-hasugian.my.id/qa-tools/cypress/",
+            "name": "Cypress & Karate Automation"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://ivan-armadi-hasugian.my.id/qa-tools/robot-framework/",
+            "name": "Robot Framework Automation"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://ivan-armadi-hasugian.my.id/qa-tools/playwright/",
+            "name": "Playwright + pytest"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ivan-armadi-hasugian.my.id/"},
+        {"@type": "ListItem", "position": 2, "name": "QA Tools", "item": "https://ivan-armadi-hasugian.my.id/qa-tools/"}
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ivan-armadi-hasugian.my.id/#person",
+      "name": "Ivan Armadi Hasugian",
+      "url": "https://ivan-armadi-hasugian.my.id/",
+      "sameAs": [
+        "https://www.linkedin.com/in/hivanarmadi/",
+        "https://github.com/HivanA98",
+        "https://orcid.org/0009-0006-7501-891X"
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/work.css">
+</head>
+<body class="page page-flex has-sitebar">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="site-bar">
+    <a class="site-brand" href="/">
+      <span class="site-brand-mark" aria-hidden="true"></span>
+      <span class="site-brand-text">Ivan Armadi Hasugian</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/qa-tools/" aria-current="page">QA Tools</a></li>
+        <li><a href="/data-science/">Data Science</a></li>
+        <li><a href="/publication/">Publications</a></li>
+        <li><a href="/training/">Training</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <header class="paper-head">
+      <div class="wrap">
+          <ol class="crumbs">
+            <li><a href="/">Home</a></li>
+            <li><span aria-current="page">QA Tools</span></li>
+          </ol>
+        <p class="paper-journal">
+          <span class="paper-kind">Test automation</span>
+          <span>3 repositories &middot; 16 CI workflows &middot; all public</span>
+        </p>
+        <h1 class="paper-title">Test automation that runs itself</h1>
+        <p class="page-lede">
+          Every suite below lives in a public repository and runs in GitHub
+          Actions on each push. The status badges are live: they come straight
+          from GitHub, so what you see is the result of the most recent run,
+          not a screenshot.
+        </p>
+      </div>
+    </header>
+
+    <section class="paper-section" aria-labelledby="totals">
+      <div class="wrap">
+        <h2 id="totals" class="visually-hidden">Totals</h2>
+        <ul class="stats">
+          <li class="stat"><span class="stat-num">276</span><span class="stat-label">Automated tests across three stacks</span></li>
+          <li class="stat"><span class="stat-num">16</span><span class="stat-label">GitHub Actions workflows</span></li>
+          <li class="stat"><span class="stat-num">15</span><span class="stat-label">Applications under test</span></li>
+          <li class="stat"><span class="stat-num">3</span><span class="stat-label">Browsers in the Playwright matrix</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="paper-section" aria-labelledby="suites">
+      <div class="wrap">
+        <h2 id="suites">The three suites</h2>
+        <ul class="tool-grid">
+          <li>
+            <a class="tool-card" href="/qa-tools/cypress/">
+              <span class="tool-count">12 projects &middot; 170+ tests</span>
+              <h3>Cypress &amp; Karate</h3>
+              <p>End-to-end tests on 10 real applications, with BDD, network stubbing and a Karate API suite. One reusable workflow drives twelve separate pipelines.</p>
+              <span class="tool-foot">Cypress &middot; Cucumber &middot; Karate &middot; JavaScript</span>
+            </a>
+          </li>
+          <li>
+            <a class="tool-card" href="/qa-tools/robot-framework/">
+              <span class="tool-count">4 applications &middot; 54 tests</span>
+              <h3>Robot Framework</h3>
+              <p>Page Object Model and BDD suites over SeleniumLibrary, linted with Robocop and run in parallel with Pabot — about three times faster than sequential.</p>
+              <span class="tool-foot">Robot Framework &middot; SeleniumLibrary &middot; Pabot &middot; Python</span>
+            </a>
+          </li>
+          <li>
+            <a class="tool-card" href="/qa-tools/playwright/">
+              <span class="tool-count">52 tests &middot; 3 browsers</span>
+              <h3>Playwright + pytest</h3>
+              <p>UI, end-to-end and HTTP-level API tests for Saucedemo, running on Chromium, Firefox and WebKit on every push, pull request and nightly schedule.</p>
+              <span class="tool-foot">Playwright &middot; pytest &middot; Python</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="paper-section" aria-labelledby="common">
+      <div class="wrap">
+        <h2 id="common">What the three have in common</h2>
+        <ul class="feature-list">
+          <li><strong>Page Object Model everywhere.</strong> Selectors live in one place per page, so a UI change is a one-line fix rather than a sweep through the specs.</li>
+          <li><strong>Tests are the documentation.</strong> BDD suites are written in Gherkin so a non-tester can read what is covered.</li>
+          <li><strong>Nothing is submitted on production sites.</strong> Suites that point at live shops stop before checkout; only demo applications run destructive flows in CI.</li>
+          <li><strong>Secrets never land in git.</strong> Credentials come from ignored env files locally and from repository secrets in CI.</li>
+          <li><strong>Known bugs are tracked, not hidden.</strong> Defects the application ships on purpose are marked as expected failures rather than deleted.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>&copy; 2026 Ivan Armadi Hasugian</span>
+      <span class="site-foot-links">
+        <a href="/">Home</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/qa-tools/">QA Tools</a>
+        <a href="/data-science/">Data Science</a>
+        <a href="/publication/">Publications</a>
+        <a href="/training/">Training</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>
