@@ -251,6 +251,10 @@ body.has-sitebar.has-own-header main[id] {
    tinggi bilah situs ditambahkan di atasnya, bukan menggantikannya. */
 body.has-sitebar.has-washi { padding-top: calc(var(--site-bar-h) + 28px); }
 
+/* An embedded app whose body sets its own padding-top of 0 (the Arabic
+   drill). Same idea as .has-washi, different starting padding. */
+body.has-sitebar.has-app { padding-top: calc(var(--site-bar-h) + 16px); }
+
 body.has-sitebar.has-own-header .scroll-progress { top: var(--site-bar-h); }
 
 /* portfolio.css menyetel scroll-padding-top: var(--nav-height); tambahkan
@@ -470,7 +474,7 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .nf h1 { margin: 1rem 0 0.75rem; font-size: clamp(1.25rem, 4.5vw, 1.55rem); }
 .nf p { margin: 0 auto 1.75rem; max-width: 46ch; color: var(--page-muted); font-size: 0.94rem; }
 
-.btn-primary {
+.page .btn-primary {
   display: inline-block;
   padding: 11px 24px;
   background: linear-gradient(90deg, var(--site-accent-b), var(--site-accent-a));
@@ -482,7 +486,7 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   transition: opacity 0.25s ease;
 }
 
-.btn-primary:hover { opacity: 0.88; }
+.page .btn-primary:hover { opacity: 0.88; }
 
 /* ============================================================
    Shared content blocks used by more than one page
@@ -512,7 +516,7 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .sec-more:hover { color: #fff; }
 .sec-more::after { content: " \2192"; }
 
-.chips {
+.page .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -521,7 +525,7 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   list-style: none;
 }
 
-.chip {
+.page .chip {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -704,7 +708,7 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 /* ---------- figures ---------- */
 
-.stats {
+.page .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1px;
@@ -717,12 +721,12 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   list-style: none;
 }
 
-.stat {
+.page .stat {
   padding: 1.15rem 1.25rem;
   background: var(--page-surface);
 }
 
-.stat-num {
+.page .stat-num {
   display: block;
   font-size: clamp(1.45rem, 4.4vw, 1.85rem);
   font-weight: 800;
@@ -734,7 +738,7 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   -webkit-text-fill-color: transparent;
 }
 
-.stat-label {
+.page .stat-label {
   display: block;
   margin-top: 0.3rem;
   font-size: 0.78rem;
@@ -760,7 +764,7 @@ a.dest-card:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   .site-nav a::after,
   a.dest-card,
   .skip-link,
-  .btn-primary { transition: none; }
+  .page .btn-primary { transition: none; }
 }
 
 /* Bulleted detail inside a role entry — keeps long method write-ups

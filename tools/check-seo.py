@@ -269,7 +269,10 @@ for rel in pages:
 # matters is whether a page is reachable from another page's BODY. Without
 # this, adding a section and wiring only the nav looks fine while the new
 # pages sit effectively orphaned from the pages that could rank them.
-BAR_RE = re.compile(r'<div class="site-bar">.*?</div>\s*</div>', re.S)
+# Anchored on </nav></div>, which is exactly how the bar ends. A lazy
+# match to the first </div></div> instead runs far past the bar and
+# swallows most of the page, which silently made this check pass.
+BAR_RE = re.compile(r'<div class="site-bar">.*?</nav>\s*</div>', re.S)
 FOOTER_RE = re.compile(r'<footer class="site-foot">.*?</footer>', re.S)
 
 inbound = {rel: set() for rel in pages}
