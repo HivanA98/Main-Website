@@ -36,6 +36,7 @@ PAGES = [
     "publication/literature-review-on-the-therapeutic-potential-of-bacteriophages-against-resistant-staphylococcus-aureus/index.html",
     "publication/in-silico-characterization-of-lysis-and-host-recognition-modules-in-staphylococcus-aureus-bacteriophage-genomes/index.html",
     "training/index.html",
+    "training/arabic/index.html",
     "training/kaiwa/index.html",
     "training/kaiwa-keigo/index.html",
     "404.html",
@@ -193,6 +194,7 @@ EXPECTED_ACTIVE = {
     "publication/literature-review-on-the-therapeutic-potential-of-bacteriophages-against-resistant-staphylococcus-aureus/index.html": "/publication/",
     "publication/in-silico-characterization-of-lysis-and-host-recognition-modules-in-staphylococcus-aureus-bacteriophage-genomes/index.html": "/publication/",
     "training/index.html": "/training/",
+    "training/arabic/index.html": "/training/",
     "training/kaiwa/index.html": "/training/",
     "training/kaiwa-keigo/index.html": "/training/",
     "404.html": None,          # 404 matches no nav entry
