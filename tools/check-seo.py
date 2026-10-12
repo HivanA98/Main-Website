@@ -203,6 +203,17 @@ elif SITE + "/sitemap.xml" not in rb:
 if re.search(r"^Disallow:\s*/\s*$", rb, re.M):
     errors.append("robots.txt: Disallow: / blocks the whole site")
 
+# ---- /favicon.ico must exist ----
+# Browsers and crawlers request /favicon.ico by convention even when the
+# page declares other icons, so a missing one shows up in Search Console
+# as a 404 that nothing on the site links to.
+if not os.path.isfile(os.path.join(ROOT, "favicon.ico")):
+    errors.append("favicon.ico: missing at the site root; crawlers request it by default")
+
+# ---- robots.txt should keep crawlers out of tools/ ----
+if os.path.isdir(os.path.join(ROOT, "tools")) and "Disallow: /tools/" not in rb:
+    warnings.append("robots.txt: tools/ is served but not disallowed")
+
 # ---- 404 must be noindex ----
 if os.path.isfile(os.path.join(ROOT, "404.html")):
     if "noindex" not in (meta(read("404.html"), "robots") or ""):
