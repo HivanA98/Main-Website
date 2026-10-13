@@ -700,11 +700,21 @@ function refresh() {
   render();
 }
 
+/* Nama tema yang dikenal. Dipakai juga untuk membuang kelas tema lama secara
+   tepat sasaran. */
+const THEMES = ["siam", "ratri", "baitoei"];
+const THEME_BAWAAN = "siam";
+
 function setTheme(name) {
-  // Swap only the theme class. Assigning body.className wholesale
-  // would wipe has-sitebar and has-app, which position the shared
-  // nav bar, dropping the page content underneath it.
-  document.body.classList.remove("theme-siam", "theme-baitoei", "theme-ratri");
+  // Nilai dari localStorage bisa saja rusak atau berasal dari versi lama.
+  // Tanpa penyaringan ini, body pernah berakhir dengan kelas
+  // "theme-[object Object]": tidak ada tema yang sah, tidak ada tombol tema
+  // yang tampak aktif, dan nilai rusaknya ditulis balik sehingga menetap.
+  if (!THEMES.includes(name)) name = THEME_BAWAAN;
+
+  // classList, bukan className: menimpa className akan menghapus kelas lain
+  // yang mungkin ada pada <body>.
+  for (const t of THEMES) document.body.classList.remove("theme-" + t);
   document.body.classList.add("theme-" + name);
   for (const b of document.querySelectorAll(".theme-dot")) {
     b.setAttribute("aria-pressed", String(b.dataset.theme === name));
@@ -731,7 +741,7 @@ function init() {
     return;
   }
 
-  setTheme(lsGet(LS.theme, "siam"));
+  setTheme(lsGet(LS.theme, THEME_BAWAAN));
 
   /* Daftar suara peramban sering baru siap beberapa saat sesudah halaman
      dimuat, jadi kartu digambar ulang begitu suaranya ditemukan. */

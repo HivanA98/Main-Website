@@ -467,12 +467,23 @@ function refresh() {
   render();
 }
 
+/* Nama tema yang dikenal. Dipakai juga untuk membuang kelas tema lama secara
+   tepat sasaran. */
+const THEMES = ["qirtas", "lail", "zaytun"];
+const THEME_BAWAAN = "qirtas";
+
 function setTheme(name) {
-  // Swap only the theme class. Assigning body.className wholesale would
-  // wipe the site-level classes (has-sitebar, has-app) that position the
-  // shared nav bar, dropping the page content underneath it.
-  document.body.classList.remove("theme-qirtas", "theme-lail", "theme-zaytun");
+  // Nilai dari localStorage bisa saja rusak atau berasal dari versi lama.
+  // Tanpa penyaringan ini, body pernah berakhir dengan kelas
+  // "theme-[object Object]": tidak ada tema yang sah, tidak ada tombol tema
+  // yang tampak aktif, dan nilai rusaknya ditulis balik sehingga menetap.
+  if (!THEMES.includes(name)) name = THEME_BAWAAN;
+
+  // classList, bukan className: menimpa className akan menghapus kelas lain
+  // yang mungkin ada pada <body>.
+  for (const t of THEMES) document.body.classList.remove("theme-" + t);
   document.body.classList.add("theme-" + name);
+
   for (const b of document.querySelectorAll(".theme-dot")) {
     b.setAttribute("aria-pressed", String(b.dataset.theme === name));
   }
@@ -497,7 +508,7 @@ function init() {
     return;
   }
 
-  setTheme(lsGet(LS.theme, "qirtas"));
+  setTheme(lsGet(LS.theme, THEME_BAWAAN));
 
   els.tabs.addEventListener("click", (e) => {
     const b = e.target.closest("button");
