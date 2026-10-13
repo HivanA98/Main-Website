@@ -85,6 +85,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ivan-armadi-hasugian.my.id/training/korean/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ivan-armadi-hasugian.my.id/training/russian/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ivan-armadi-hasugian.my.id/training/thai/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ivan-armadi-hasugian.my.id/training/turkish/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ivan-armadi-hasugian.my.id/training/kaiwa/</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
