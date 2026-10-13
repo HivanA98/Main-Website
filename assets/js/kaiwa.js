@@ -382,16 +382,19 @@ function wire() {
 }
 
 /* ---------- tema (dengan penyimpanan) ---------- */
+const THEMES = ["washi", "ai", "matcha"];
+const THEME_BAWAAN = "washi";
+
 function setTheme(name) {
-  document.body.classList.remove("theme-washi", "theme-ai", "theme-matcha");
+  if (!THEMES.includes(name)) name = THEME_BAWAAN;
+  for (const t of THEMES) document.body.classList.remove("theme-" + t);
   document.body.classList.add("theme-" + name);
   document.querySelectorAll(".theme-dot").forEach((d) =>
     d.setAttribute("aria-pressed", String(d.dataset.theme === name)));
   lsSet(LS.theme, name);
 }
 function restoreTheme() {
-  const t = lsGet(LS.theme, "washi");
-  setTheme(["washi", "ai", "matcha"].includes(t) ? t : "washi");
+  setTheme(lsGet(LS.theme, THEME_BAWAAN));
 }
 
 /* ---------- hitung mundur keberangkatan ---------- */
