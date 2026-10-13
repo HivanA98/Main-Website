@@ -41,6 +41,7 @@ PAGES = [
     "training/russian/index.html",
     "training/thai/index.html",
     "training/turkish/index.html",
+    "training/french/index.html",
     "training/kaiwa/index.html",
     "training/kaiwa-keigo/index.html",
     "404.html",
