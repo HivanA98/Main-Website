@@ -519,11 +519,15 @@ function refresh() {
   render();
 }
 
+const THEMES = ["kagit", "cay", "gece"];
+const THEME_BAWAAN = "kagit";
+
 function setTheme(name) {
-  // Swap only the theme class. Assigning body.className wholesale
-  // would wipe has-sitebar and has-app, which position the shared
-  // nav bar, dropping the page content underneath it.
-  document.body.classList.remove("theme-kagit", "theme-cay", "theme-gece");
+  if (!THEMES.includes(name)) name = THEME_BAWAAN;
+  // Swap only the theme class. Assigning body.className wholesale would
+  // wipe the site-level classes (has-sitebar, has-app) that position the
+  // shared nav bar, dropping the page content underneath it.
+  for (const t of THEMES) document.body.classList.remove("theme-" + t);
   document.body.classList.add("theme-" + name);
   for (const b of document.querySelectorAll(".theme-dot")) {
     b.setAttribute("aria-pressed", String(b.dataset.theme === name));
@@ -549,7 +553,7 @@ function init() {
     return;
   }
 
-  setTheme(lsGet(LS.theme, "kagit"));
+  setTheme(lsGet(LS.theme, THEME_BAWAAN));
 
   els.tabs.addEventListener("click", (e) => {
     const b = e.target.closest("button");
