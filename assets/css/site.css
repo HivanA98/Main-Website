@@ -165,10 +165,20 @@
 
 /* The bar carries the brand plus every section link. Below ~600px the two
    compete for the same row, so the brand drops to its mark alone (still a
-   link home) and the nav gets the width back. */
+   link home) and the nav gets the width back. The text is clipped rather
+   than display:none so the link keeps an accessible name; the mark is
+   aria-hidden and would otherwise leave the home link unnamed. */
 @media (max-width: 600px) {
   .site-bar { gap: 0.6rem; }
-  .site-bar .site-brand-text { display: none; }
+  .site-bar .site-brand-text {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
   .site-bar .site-nav a { font-size: 0.8rem; }
   .site-bar .site-nav ul { gap: 0.95rem; }
 }
