@@ -350,3 +350,75 @@
 }
 
 .edu-line .muted { color: var(--page-muted); font-size: 0.84rem; }
+
+/* ---------- foto profil di kepala halaman ----------
+   Gaya bingkai mengikuti .image-wrapper di portfolio.css
+   (cahaya gradien ungu-merah, sudut 12px). Bingkai memakai
+   aspect-ratio 4:5 + object-fit: cover, jadi foto pengganti
+   dengan ukuran berbeda tetap terpotong rapi dari sisi atas. */
+
+.pub-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.pub-hero-text { min-width: 0; }
+
+.pub-photo {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+  background-color: #1a1a24;
+}
+
+.pub-photo::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #7a1b7e, #d1152a);
+  filter: blur(15px);
+  opacity: 0.6;
+  animation: pubPhotoGlow 4s infinite alternate;
+}
+
+@keyframes pubPhotoGlow {
+  0%   { opacity: 0.4; filter: blur(15px); }
+  100% { opacity: 0.8; filter: blur(20px); }
+}
+
+.pub-photo picture { display: block; width: 100%; height: 100%; }
+
+.pub-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* tablet */
+@media (max-width: 968px) {
+  .pub-hero { grid-template-columns: minmax(0, 1fr) 200px; gap: 2rem; }
+}
+
+/* ponsel dan tablet potret sempit: foto di atas teks */
+@media (max-width: 720px) {
+  .pub-hero { grid-template-columns: 1fr; gap: 2rem; }
+  .pub-photo {
+    order: -1;
+    width: min(220px, 62vw);
+    justify-self: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pub-photo::before { animation: none; }
+}
