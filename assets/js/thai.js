@@ -34,8 +34,27 @@ function lsSet(key, val) {
 const BOX_DAYS = { 1: 0, 2: 1, 3: 3, 4: 7, 5: 16 };
 const MAX_BOX = 5;
 
-const progress = lsGet(LS.prog, { cards: {} });
-if (!progress.cards) progress.cards = {};
+// Progres dari localStorage bisa rusak atau berasal dari versi lama. Entri
+// yang tidak sah dibuang satu per satu supaya sisa progres tetap terpakai;
+// tanpa ini nilai bukan-objek membuat init() gagal, dan box yang bukan angka
+// membuat grade() menghitung NaN lalu toISOString() melempar RangeError.
+function cleanCards(saved) {
+  const cards = {};
+  const src = saved && saved.cards;
+  if (!src || typeof src !== "object" || Array.isArray(src)) return cards;
+  for (const [id, s] of Object.entries(src)) {
+    if (!s || !Number.isInteger(s.box) || s.box < 1 || s.box > MAX_BOX) continue;
+    if (typeof s.due !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(s.due)) continue;
+    cards[id] = {
+      box: s.box,
+      due: s.due,
+      seen: Number.isInteger(s.seen) && s.seen >= 0 ? s.seen : 0,
+      right: Number.isInteger(s.right) && s.right >= 0 ? s.right : 0,
+    };
+  }
+  return cards;
+}
+const progress = { cards: cleanCards(lsGet(LS.prog, null)) };
 
 /* arah: true berarti Indonesia -> Thai, yaitu arah PRODUKSI. Sengaja
    dinyalakan secara bawaan: untuk bisa berbicara, memanggil kata Thainya
