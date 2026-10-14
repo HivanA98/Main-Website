@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://github.com; connect-src 'self'; base-uri 'none'; form-action 'none'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ivan Armadi Hasugian - QA Engineer | Test Automation Portfolio</title>
     <meta name="description" content="ISTQB-certified QA Engineer, 3 years in banking, e-commerce, travel-tech, and automotive. Test automation with Playwright, Cypress, Robot Framework, Katalon.">
@@ -265,7 +266,7 @@
                     <div class="btn-group">
                         <a href="https://www.linkedin.com/in/hivanarmadi/" class="action-btn btn-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
                         <a href="https://github.com/HivanA98" class="action-btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="mailto:hivanarmadi@gmail.com" class="action-btn btn-outline"><i class="far fa-envelope"></i> Email</a>
+                        <a href="#contact" data-mail-user="hivanarmadi" data-mail-host="gmail.com" class="action-btn btn-outline"><i class="far fa-envelope"></i> Email</a>
                     </div>
                 </div>
                 <div class="visual-content">
@@ -796,10 +797,10 @@
                     <div class="contact-item">
                         <div class="contact-icon"><i class="far fa-envelope"></i></div>
                         <div class="contact-details">
-                            <a href="mailto:hivanarmadi@gmail.com">
+                            <a href="#contact" data-mail-user="hivanarmadi" data-mail-host="gmail.com">
                                 <h4>Email</h4>
                             </a>
-                            <span>hivanarmadi@gmail.com</span>
+                            <span data-mail-user="hivanarmadi" data-mail-host="gmail.com" data-mail-text>hivanarmadi [at] gmail.com</span>
                         </div>
                     </div>
 
@@ -862,7 +863,7 @@
                     <div class="social-squares">
                         <a href="https://github.com/HivanA98" class="social-square" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/hivanarmadi/" class="social-square" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="mailto:hivanarmadi@gmail.com" class="social-square" aria-label="Send email"><i class="far fa-envelope"></i></a>
+                        <a href="#contact" data-mail-user="hivanarmadi" data-mail-host="gmail.com" class="social-square" aria-label="Send email"><i class="far fa-envelope"></i></a>
                     </div>
                     <p class="footer-connect-text">Open for opportunities and collaborations</p>
                 </div>
@@ -878,5 +879,6 @@
     </footer>
     <script src="/assets/js/projects.js"></script>
     <script src="/assets/js/portfolio.js"></script>
+    <script src="/assets/js/email.js"></script>
 </body>
 </html>

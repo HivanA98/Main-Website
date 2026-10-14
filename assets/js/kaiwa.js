@@ -45,7 +45,11 @@ function lsSet(key, val) {
 }
 
 /* ---------- state ---------- */
-const learned = new Set(lsGet(LS.learned, []));
+// Hanya array berisi string yang sah; nilai lain dari localStorage (angka,
+// objek) tidak bisa diiterasi dan akan menggagalkan seluruh skrip.
+const savedLearned = lsGet(LS.learned, []);
+const learned = new Set(Array.isArray(savedLearned)
+  ? savedLearned.filter((k) => typeof k === "string") : []);
 const prefs = Object.assign({ furigana: true, romaji: true, slow: false, hide: false }, lsGet(LS.prefs, {}));
 const keyOf = (c) => c.jp;          // id stabil per kartu (validator menjamin jp unik)
 

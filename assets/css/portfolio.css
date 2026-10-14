@@ -164,7 +164,11 @@ h2.section-title { margin-bottom: 0; line-height: inherit; }
 .skill-tag:hover { background-color: rgba(255, 255, 255, 0.1); color: white; }
 
 /* --- TIMELINE SECTION --- */
-.timeline { position: relative; max-width: 1000px; margin: 0 auto; padding: 2rem 0; }
+/* overflow-x: clip keeps unrevealed .reveal.from-right items (translateX(36px))
+   from widening the page up to ~1024px; on phones the wider layout viewport
+   pushed the header's menu button off-screen. clip, unlike hidden, creates
+   no scroll container, so the vertical axis stays visible. */
+.timeline { position: relative; max-width: 1000px; margin: 0 auto; padding: 2rem 0; overflow-x: clip; }
 .timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--accent-red); top: 0; bottom: 0; left: 50%; margin-left: -1px; }
 .timeline-item { padding: 10px 50px; position: relative; width: 50%; box-sizing: border-box; }
 .timeline-item.left { left: 0; } .timeline-item.right { left: 50%; }
@@ -650,6 +654,7 @@ body.js-ready .hero-section .visual-content {
     body.js-ready .hero-section .text-content > *,
     body.js-ready .hero-section .visual-content { animation: none !important; }
     .scroll-down { animation: none !important; }
+    .image-wrapper::before { animation: none !important; }
     html { scroll-behavior: auto !important; }
 }
 

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://github.com; connect-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ivan Armadi Hasugian — QA Engineer &amp; Genomics Researcher</title>
   <meta name="description" content="ISTQB-certified QA Engineer with 3 years in banking, e-commerce, travel-tech and automotive, and author of two publications on Staphylococcus aureus bacteriophages.">
@@ -68,7 +69,6 @@
       "jobTitle": "QA Engineer",
       "description": "ISTQB-certified QA Engineer with three years of experience in banking, e-commerce, travel-tech and automotive, and a biology graduate publishing on Staphylococcus aureus bacteriophage genomics.",
       "url": "https://ivan-armadi-hasugian.my.id/",
-      "email": "mailto:hivanarmadi@gmail.com",
       "image": "https://ivan-armadi-hasugian.my.id/assets/photoprofile/profile-photo.webp",
       "identifier": {
         "@type": "PropertyValue",
@@ -205,7 +205,7 @@
         </p>
 
         <div class="hero-links">
-          <a class="hero-link hero-link-primary" href="mailto:hivanarmadi@gmail.com">Email me</a>
+          <a class="hero-link hero-link-primary" href="#contact" data-mail-user="hivanarmadi" data-mail-host="gmail.com">Email me</a>
           <a class="hero-link" href="https://www.linkedin.com/in/hivanarmadi/" rel="noopener">LinkedIn</a>
           <a class="hero-link" href="https://github.com/HivanA98" rel="noopener">GitHub</a>
           <a class="hero-link" href="https://orcid.org/0009-0006-7501-891X" rel="noopener">ORCID</a>
@@ -441,7 +441,7 @@
         <p class="page-lede">
           Open to QA engineering roles, and to research internships in
           molecular biology and computational genomics.
-          <a href="mailto:hivanarmadi@gmail.com">hivanarmadi@gmail.com</a>
+          <a href="#contact" data-mail-user="hivanarmadi" data-mail-host="gmail.com" data-mail-text>hivanarmadi [at] gmail.com</a>
         </p>
       </div>
     </section>
@@ -464,5 +464,6 @@
     </div>
   </footer>
 
+  <script src="/assets/js/email.js"></script>
 </body>
 </html>

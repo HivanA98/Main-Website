@@ -37,7 +37,9 @@ const learned = loadLearned();
 function loadLearned() {
   try {
     const raw = localStorage.getItem(LS_KEY);
-    return new Set(raw ? JSON.parse(raw) : []);
+    const saved = raw ? JSON.parse(raw) : [];
+    // String juga bisa diiterasi dan akan dipecah per huruf; terima array saja.
+    return new Set(Array.isArray(saved) ? saved.filter((k) => typeof k === "string") : []);
   } catch { return new Set(); }
 }
 function saveLearned() {
