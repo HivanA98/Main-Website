@@ -358,23 +358,33 @@
    dengan ukuran berbeda tetap terpotong rapi dari sisi atas. */
 
 .pub-hero {
+  /* Pengaturan utama foto */
+  --photo-width: 240px;
+  --photo-ratio: 4 / 5;
+  --photo-fit: cover;
+  --photo-focus-x: 85%;
+  --photo-focus-y: 35%;
+
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 240px;
+  grid-template-columns: minmax(0, 1fr) var(--photo-width);
   gap: 2.5rem;
   align-items: center;
 }
 
-.pub-hero-text { min-width: 0; }
+.pub-hero-text {
+  min-width: 0;
+}
 
 .pub-photo {
   position: relative;
   isolation: isolate;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: var(--photo-ratio);
   border-radius: 12px;
   background-color: #1a1a24;
 }
 
+/* Cahaya di belakang bingkai */
 .pub-photo::before {
   content: "";
   position: absolute;
@@ -388,37 +398,52 @@
 }
 
 @keyframes pubPhotoGlow {
-  0%   { opacity: 0.4; filter: blur(15px); }
-  100% { opacity: 0.8; filter: blur(20px); }
+  0% {
+    opacity: 0.4;
+    filter: blur(15px);
+  }
+
+  100% {
+    opacity: 0.8;
+    filter: blur(20px);
+  }
 }
 
-.pub-photo picture { display: block; width: 100%; height: 100%; }
+/* Mendukung struktur gambar langsung maupun <picture> */
+.pub-photo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
 .pub-photo img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: var(--photo-fit);
+  object-position: var(--photo-focus-x) var(--photo-focus-y);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* tablet */
+/* Tablet */
 @media (max-width: 968px) {
-  .pub-hero { grid-template-columns: minmax(0, 1fr) 200px; gap: 2rem; }
+  .pub-hero {
+    --photo-width: 200px;
+    gap: 2rem;
+  }
 }
 
-/* ponsel dan tablet potret sempit: foto di atas teks */
+/* Ponsel dan tablet potret sempit: foto di atas teks */
 @media (max-width: 720px) {
-  .pub-hero { grid-template-columns: 1fr; gap: 2rem; }
+  .pub-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
   .pub-photo {
     order: -1;
     width: min(220px, 62vw);
     justify-self: center;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pub-photo::before { animation: none; }
 }
