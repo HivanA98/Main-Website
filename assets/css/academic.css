@@ -369,7 +369,7 @@
 .pub-photo {
   position: relative;
   isolation: isolate;
-  width: 100%;
+  width: 150%;
   aspect-ratio: 5 / 4;
   border-radius: 12px;
   background-color: #1a1a24;
